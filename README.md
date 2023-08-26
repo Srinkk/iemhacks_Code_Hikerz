@@ -1,24 +1,17 @@
 # iemhacks_Code_Hikerz
-GitHub Repo of team Code_Hikerz for IemHacks 2.0
+GitHub Repo of team **Code_Hikerz** for <u>*IemHacks 2.0*</u>
 
 ## ⚓ Our Team Members
-👨🏻‍💻 <u>Rajarshi Dutta</u> - **`goblin45`**
+👨🏻‍💻 **Rajarshi Dutta :** <u>[**`goblin45`**](https://github.com/goblin45)</u>
 
-Find his profile here - *`https://github.com/goblin45`*
+👩🏻‍💻 **Shreya Ganguly :** <u>[**`Srinkk`**](https://github.com/Srinkk)</u>
 
-👩🏻‍💻 <u>Shreya Ganguly</u> - **`Srinkk`**
-
- Find her profile here - *`https://github.com/Srinkk`*
-
-👩🏻‍💻 <u>Ishika Ghosh</u> - **`ishikag123`**
-
-Find her profile here - *`https://github.com/ishikag123`*
+👩🏻‍💻 **Ishika Ghosh :** <u>[**`ishikag123`**](https://github.com/ishikag123)</u>
 
 ## ⚓ Problem Statement
 At present, parents don’t get time to pay enough attention to the children, especially when it comes to their mental health. And even for the adults, feelings of being excluded, unattended by the loved ones, problems/stress at work etc. can start to develop serious illnesses in their subconscious minds. 
 Most of the time people don’t even know that they are suffering from depression. 
 Therefore our team felt the need of a solution that can track a person's online searches and detect any mental instability in a very early stage and let his/her family know that something is not right with him/her.
-
 
 ## ⚓ Project Installation Setup
 As our project is created with MERN stack, both frontend and backend are running in Node.js runtime except the Flask servers we have used.
