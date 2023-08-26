@@ -3,8 +3,7 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 import requests
 from langdetect import detect
-from EmoVideoDict import feelings_to_keywords
-# from EmoMusicsDict import feelings_to_keywords
+from EmoMusicsDict import feelings_to_keywords
 
 app = Flask(__name__)
 CORS(app, resources={r"/getMusics": {"origins": { "http://localhost:3500/content/music" } }})
