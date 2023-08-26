@@ -103,7 +103,7 @@ pip install scipy
 pip install torch
 ```
 
-**<u>Note</u>** : *Please consider pasting your own API-KEY derived from your google cloud console. As we can't disclose our API-KEYs for security reasons.*
+<u>**Note**</u> : *Please consider pasting your own API-KEY derived from your google cloud console. As we can't disclose our API-KEYs for security reasons.*
 
 2. Run these five Flask servers in dedicated terminals for each:
 
