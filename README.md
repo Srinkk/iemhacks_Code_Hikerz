@@ -21,7 +21,7 @@ As our project is created with MERN stack, both frontend and backend are running
 1. Fork our repo into your own github.
 2. Connect the forked repo with a new folder in your local. In your terminal, run - 
 ```
-git remote add origin https://github.com/goblin45/iemhacks_Code_Hikerz-.git
+git remote add origin https://github.com/goblin45/iemhacks_Code_Hikerz.git
 ```
 3. Pull all the directories and files into your project folder: 
 
