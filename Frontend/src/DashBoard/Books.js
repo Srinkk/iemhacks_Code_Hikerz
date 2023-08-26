@@ -9,8 +9,7 @@ import Truncate from "./Truncate";
 const Books = ({ currentEmotion, preferences }) => {
   const [bookdata, setBookdata] = useState([]);
 
-  // api_key = AIzaSyDBkfKRk5SEk1GtMMAeMss4pgyTuK5Ts4I;
-  const api_key = "AIzaSyC3wv3am_QyPy6F1db_KI74Bio4WuNkAj4";
+  const api_key = "";
 
   // const booksId = [
   //   {

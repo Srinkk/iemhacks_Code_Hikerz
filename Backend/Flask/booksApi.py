@@ -8,7 +8,7 @@ from EmoBooksDict import get_keywords
 app = Flask(__name__)
 CORS(app, resources={r"/getBooks": {"origins": { "http://localhost:3500/content/books" } }})
 
-my_api_key = "AIzaSyC3wv3am_QyPy6F1db_KI74Bio4WuNkAj4"
+my_api_key = ""
 
 books = build('books', 'v1', developerKey = my_api_key)
 
