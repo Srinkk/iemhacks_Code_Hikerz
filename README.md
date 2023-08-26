@@ -125,6 +125,8 @@ Though this setup is optional, but integrating it makes the project go one step 
 
 6. Drag and drop the extracted folder into the `Extension Manager` window and the extension will start working.
 
+**<u>Note</u>** : In your system settings, navigate to *`System > Notifications > Google Chrome`* to make sure it's turned on.
+
 **We appreciate your patience. Hope you will like the project.**
 
 **Thanks for staying tuned!**
