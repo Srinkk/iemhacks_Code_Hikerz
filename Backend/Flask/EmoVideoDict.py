@@ -8,7 +8,7 @@ def get_keywords(emotion):
 
 feelings_to_keywords = {
     'happy': [
-        
+        'inspirational'
     ],
     'sad': [
         'comforting words',
@@ -37,6 +37,6 @@ feelings_to_keywords = {
     'stressed': [
         'stress management',
         'relaxation techniques',
-        'calming music'
+    
     ]
 }
