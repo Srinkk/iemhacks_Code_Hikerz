@@ -1,5 +1,14 @@
+import random
+
+def get_keywords(emotion):
+    index = random.randint(0, len(feelings_to_keywords[emotion]) - 1)
+    keywords = feelings_to_keywords[emotion][index]
+    keywords_arr = keywords.split()
+    return keywords_arr
+
 feelings_to_keywords = {
     'happy': [
+        
     ],
     'sad': [
         'comforting words',
@@ -27,6 +36,7 @@ feelings_to_keywords = {
     ],
     'stressed': [
         'stress management',
-        'relaxation techniques'
+        'relaxation techniques',
+        'calming music'
     ]
 }

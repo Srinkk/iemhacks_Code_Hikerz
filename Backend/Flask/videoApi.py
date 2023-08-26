@@ -5,7 +5,7 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 import requests
 from Sentiment import roberta_polarity_score
-from EmoVideoDict import feelings_to_keywords
+from EmoVideoDict import get_keywords
 
 app = Flask(__name__)
 CORS(app, resources={r"/getVideos": {"origins": { "http://localhost:3500/content/video" } }})
@@ -22,9 +22,7 @@ def search_videos():
         preferences = data_received['preferences']
     if 'current_emotion' in data_received:
         current_emotion = data_received['current_emotion'].lower()
-        keywords = feelings_to_keywords[current_emotion]
-
-    print(keywords)
+        keywords = get_keywords(current_emotion)
 
     # build the q
     keywords_str = ""
@@ -44,16 +42,9 @@ def search_videos():
 
     try:
         next_page_token = ""
-        filter_str = ""
-        while (len(videosToShow) < 6):
+        filter_str = keywords_str
 
-            if (len(videosToShow) < 4):
-                filter_str = keywords_str
-            else:
-                filter_str = preferences_str
-            
-            if (len(videosToShow) == 4):
-                next_page_token = ""
+        while (len(videosToShow) < 6):
 
             search_response = youtube.search().list(
                 part = 'snippet',
@@ -70,16 +61,21 @@ def search_videos():
                 for item in search_response['items']:
                     video_id = item['id']['videoId']
                     video_title = item['snippet']['title']
-                    # ratio = get_like_dislike(video_id)
                     comments = video_comments(video_id)
-                    # comments = []
                     comment_score = roberta_polarity_score(comments)
                     try:
                         titleLang = detect(video_title)
-                        if titleLang == 'en' and len(videosToShow) < 6:
-                            if comment_score['neg'] < comment_score['pos']:
-                                videosToShow.append(video_id)
-                                print("passed: " + video_id)
+                        if titleLang == 'en':
+                            if len(videosToShow) == 4 and filter_str != preferences_str:
+                                filter_str = preferences_str
+                                next_page_token = ""
+                                break
+                            if len(videosToShow) < 6:
+                                if comment_score['neg'] < comment_score['pos']:
+                                    videosToShow.append(video_id)
+                                    print("passed: " + video_id)
+                            else:
+                                break
                         else:
                             pass
                     except Exception as e:

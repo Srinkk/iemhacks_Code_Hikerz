@@ -3,7 +3,7 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 import requests
 from langdetect import detect
-from EmoMusicsDict import feelings_to_keywords
+from EmoMusicDict import get_keywords
 
 app = Flask(__name__)
 CORS(app, resources={r"/getMusics": {"origins": { "http://localhost:3500/content/music" } }})
@@ -20,9 +20,7 @@ def search_musics():
         preferences = data_received['preferences']
     if 'current_emotion' in data_received:
         current_emotion = data_received['current_emotion'].lower()
-        keywords = feelings_to_keywords[current_emotion]
-
-    print(keywords)
+        keywords = get_keywords(current_emotion)
 
     # build the q
     keywords_str = ""
@@ -42,16 +40,10 @@ def search_musics():
 
     try:
         next_page_token = ""
-        filter_str = ""
-        while (len(musicsToShow) < 6):
+        filter_str = keywords_str
 
-            if (len(musicsToShow) < 4):
-                filter_str = keywords_str
-            else:
-                filter_str = preferences_str
-            
-            if (len(musicsToShow) == 4):
-                next_page_token = ""
+        while (len(musicsToShow) < 6):      
+            print(filter_str)          
 
             search_response = youtube.search().list(
                 part = 'snippet',
@@ -61,18 +53,26 @@ def search_musics():
                 type = 'video',
                 videoDefinition = 'high',
                 videoDuration = 'medium',
+                videoCategoryId = '10',
                 pageToken = next_page_token
             ).execute()
 
             if 'items' in search_response:
-                for item in search_response['items']:
-                    music_id = item['id']['videoId']
-                    music_title = item['snippet']['title']
+                for music in search_response['items']:
+                    music_id = music['id']['videoId']
+                    music_title = music['snippet']['title']
                     try:
                         titleLang = detect(music_title)
-                        if titleLang == 'en' and len(musicsToShow) < 6:
-                            musicsToShow.append(music_id)
-                            print("passed: " + music_id)
+                        if titleLang == 'en':
+                            if len(musicsToShow) == 4 and filter_str != preferences_str:
+                                filter_str = preferences_str
+                                next_page_token = ""
+                                break
+                            if len(musicsToShow) < 6:
+                                musicsToShow.append(music_id)
+                                print("passed: " + music_id + " " + music_title)
+                            else:
+                                break
                         else:
                             pass
                     except Exception as e:
