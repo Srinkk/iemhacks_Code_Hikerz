@@ -84,7 +84,7 @@ pip install flask_cors
 ```
 
 ```
-pip install google-api-client
+pip install google-api-python-client
 ```
 
 ```
