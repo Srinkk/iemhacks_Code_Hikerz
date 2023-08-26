@@ -34,7 +34,7 @@ git pull origin main
 1. Navigate to the `Frontend` folder in your terminal and run -
 
 ```
-npm init
+npm install
 ```
 
 This will install all the dependencies mentioned in the `package.json` of the `Frontend`.
@@ -52,7 +52,7 @@ This will start the server at local port `3000`.
 1. Navigate to the `Backend/Node` folder in your terminal and run - 
 
 ```
-npm init
+npm install
 ```
 
 This will install all the dependencies mentioned in the `package.json` of the `Backend/Node`.
