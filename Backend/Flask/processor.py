@@ -38,11 +38,8 @@ def getScore(last_searches):
 file = ['abuse','abused','abusement','assault','assaulted','catastrophe','crisis','death','pain','panic','suicide','trauma','disaster','hurt','painful','victim','violence','anxiety','hurting','anxious','painfully','depression','depressed']
 
 def checkExtreme(text):
-    # with open('Extremities.txt', 'r') as file:
-
     if findRatio(text) < threshold:
         for word in file:
-            
             if word == text:
                 return True
         return False
@@ -89,26 +86,3 @@ def process():
 
 if __name__ == "__main__":
     app.run(debug = True, port = 5001)
-
-
-# pos_score = 0
-# neg_score = 0
-# for word in clear_text:
-#     if word in positive_words_set:
-#         pos_score += 1
-# for word in clear_text:
-#     if word in negative_words_set:
-#         neg_score += 1
-
-# curr_feeling = ''
-# score = 0
-# if (pos_score > neg_score):
-#     curr_feeling = 'happy'
-#     score = 1
-# elif (pos_score < neg_score): 
-#     curr_feeling = 'sad'
-#     score = -1
-# else:
-#     curr_feeling = 'neutral'
-
-# return jsonify({ 'message' : 'Feeling ' + curr_feeling, 'score' : score}), 200
