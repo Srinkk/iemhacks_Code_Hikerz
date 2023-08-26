@@ -3,10 +3,13 @@ GitHub Repo of team Code_Hikerz for IemHacks 2.0
 
 ## Our Team Members
  - Rajarshi Dutta - **`goblin45`**
+
 Find his profile here - *`https://github.com/goblin45`*
  - Shreya Ganguly - **`Srinkk`**
+
 Find her porfile here - *`https://github.com/Srinkk`*
  - Ishika Ghosh - **`ishikag123`**
+
 Find her profile here - *`https://github.com/ishikag123`*
 
 ## Problem Statement
