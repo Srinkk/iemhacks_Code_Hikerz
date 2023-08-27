@@ -17,11 +17,7 @@ code {
 }
 .home_background{
   /* background-image: url("./Images/Different_people.jpg"); */
-<<<<<<< HEAD
   height: 100%;
-=======
-  height:1080px;
->>>>>>> c2bd0fbab676c73e0d9234f1c5c228746fe32dfa
 }
 .home_section {
   display: flex;
@@ -497,7 +493,6 @@ code {
   padding-left: 50px;
   margin-left: 20px;
 }
-<<<<<<< HEAD
 .policy_head h2 {
   color: #256e53;
 }
@@ -601,15 +596,6 @@ code {
   padding-top: 30px;
   height: 100vh;
   background-image: linear-gradient(to right, #a6e0ab, #ade0bb);
-=======
-.about_heading{
-  color:#396b4b;
-  display:flex;
-  flex-direction: column-reverse;
-  margin-top: 30px;
-  justify-content: flex-start;
-  padding:20px 0px;
->>>>>>> c2bd0fbab676c73e0d9234f1c5c228746fe32dfa
 }
 
 .signup_button {
