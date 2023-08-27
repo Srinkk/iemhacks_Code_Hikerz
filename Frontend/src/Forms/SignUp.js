@@ -9,7 +9,6 @@ import {
   faPerson,
 } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
-import { FormContainer } from "./FormContainer";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import image from "../Images/sign_up.jpg";
