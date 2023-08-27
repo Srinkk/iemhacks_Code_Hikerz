@@ -13,7 +13,7 @@ code {
 }
 .home_background {
   /* background-image: url("./Images/Different_people.jpg"); */
-  height: 1080px;
+  height: 100%;
 }
 .home_section {
   display: flex;
@@ -333,7 +333,6 @@ code {
 }
 .form_label_email {
   flex: 1;
-
   position: relative;
 }
 .login_write {
@@ -457,6 +456,13 @@ code {
   color: #256e53;
 }
 
-.icon-input-container {
-  display: flex;
+.current-emotion-box {
+  width: 250px;
+}
+
+.dashboard-container {
+  background-color: rgb(166 224 171 / 47%);
+  height: 100vh;
+  width: 100%;
+  overflow: auto;
 }
