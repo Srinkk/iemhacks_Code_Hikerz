@@ -17,7 +17,11 @@ code {
 }
 .home_background{
   /* background-image: url("./Images/Different_people.jpg"); */
+<<<<<<< HEAD
+  height: 100%;
+=======
   height:1080px;
+>>>>>>> c2bd0fbab676c73e0d9234f1c5c228746fe32dfa
 }
 .home_section {
   display: flex;
@@ -493,6 +497,111 @@ code {
   padding-left: 50px;
   margin-left: 20px;
 }
+<<<<<<< HEAD
+.policy_head h2 {
+  color: #256e53;
+}
+.policy_content {
+  padding: 10px 0px;
+  text-align: left;
+}
+.policy_container {
+  position: relative;
+  top: 70px;
+}
+.policy_container h5 {
+  color: #33916e;
+  font-weight: 500;
+}
+.agree_box {
+  text-align: left;
+  display: inline;
+}
+
+.chat_background {
+  background-image: url("./Images/chat_bg.jpg");
+
+  width: 100%;
+  height: 1080px;
+  /* border: solid 1px black; */
+}
+.chat_container {
+  width: 1920px;
+  height: 100%;
+}
+.chat_overlay {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(134, 116, 116, 0.8);
+}
+.chat_field {
+  display: flex;
+  flex-direction: column;
+  align-self: flex-end;
+  padding: 5px;
+  border-radius: 10px;
+  outline: none;
+  width: 50%;
+}
+.chat_head {
+  border: 1px solid rgb(137, 122, 122);
+  background-color: rgb(151, 192, 192);
+}
+.chat_box {
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  top: 400px;
+  right: -20px;
+
+  padding: 5px;
+}
+.form_label {
+  position: relative;
+  top: 5px;
+}
+.preference_form_label {
+  position: relative;
+  top: 45px;
+}
+.form_label_relation {
+  position: relative;
+  width: 200px;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+
+  flex: 1;
+}
+.form_label_email {
+  flex: 1;
+  position: relative;
+}
+.login_write {
+  position: relative;
+  top: -18px;
+}
+.login_Link {
+  color: #ad4582;
+}
+.form_section {
+  height: 150vh;
+  background-image: linear-gradient(to right, #ade0bb, #a6e0ab);
+}
+.form_section_edit {
+  padding: 50px;
+  height: 150vh;
+  background-image: linear-gradient(to right, #ade0bb, #a6e0ab);
+}
+.login_form_section {
+  padding-top: 30px;
+  height: 100vh;
+  background-image: linear-gradient(to right, #a6e0ab, #ade0bb);
+=======
 .about_heading{
   color:#396b4b;
   display:flex;
@@ -500,6 +609,7 @@ code {
   margin-top: 30px;
   justify-content: flex-start;
   padding:20px 0px;
+>>>>>>> c2bd0fbab676c73e0d9234f1c5c228746fe32dfa
 }
 
 .signup_button {
@@ -605,6 +715,13 @@ code {
   text-overflow: ellipsis;
 }
 
-.icon-input-container {
-  display: flex;
+.current-emotion-box {
+  width: 250px;
+}
+
+.dashboard-container {
+  background-color: rgb(166 224 171 / 47%);
+  height: 100vh;
+  width: 100%;
+  overflow: auto;
 }
