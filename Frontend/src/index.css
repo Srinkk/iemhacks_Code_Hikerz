@@ -18,7 +18,6 @@ code {
 .home_section {
   display: flex;
   flex-direction: row;
-  max-width: fit-content;
   justify-content: flex-end;
   position: relative;
   top: -20px;
