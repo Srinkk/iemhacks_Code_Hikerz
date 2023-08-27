@@ -28,7 +28,6 @@ export default function Preference({ _id, setPreferStatus, preferStatus }) {
    web_series:false,
    old_movies:false,
    space:false,
-   animals:false,
    nature:false,
    motivational:false,
    productive:false
@@ -227,6 +226,13 @@ export default function Preference({ _id, setPreferStatus, preferStatus }) {
       booksCategories
     );
   };
+  // web_series:false,
+  //  old_movies:false,
+  //  space:false,
+  //  animals:false,
+  //  nature:false,
+  //  motivational:false,
+  //  productive:false
 
   const children_video = (
     <Box sx={{ display: "flex", flexDirection: "column", ml: 2 }}>
@@ -235,18 +241,38 @@ export default function Preference({ _id, setPreferStatus, preferStatus }) {
         label="Web Series"
         control={
           <Checkbox
-            checked={checked_video.cats}
-            name="cats"
+            checked={checked_video.web_series}
+            name="web_series"
             onChange={handleChangeSubVideo}
           />
         }
       />
       <FormControlLabel
-        label="Dogs"
+        label="Space"
         control={
           <Checkbox
-            checked={checked_video.dogs}
-            name="dogs"
+            checked={checked_video.space}
+            name="space"
+            onChange={handleChangeSubVideo}
+          />
+        }
+      />
+       <FormControlLabel
+        label="Old Movies"
+        control={
+          <Checkbox
+            checked={checked_video.old_movies}
+            name="old_movies"
+            onChange={handleChangeSubVideo}
+          />
+        }
+      />
+       <FormControlLabel
+        label="Old Movies"
+        control={
+          <Checkbox
+            checked={checked_video.old_movies}
+            name="old_movies"
             onChange={handleChangeSubVideo}
           />
         }

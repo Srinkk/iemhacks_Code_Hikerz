@@ -19,11 +19,11 @@ code {
   /* background-image: url("./Images/Different_people.jpg"); */
   height:1080px;
 }
-.home_section{
-  display:flex;
-  flex-direction:row;
+.home_section {
+  display: flex;
+  flex-direction: row;
   max-width: fit-content;
-  justify-content:flex-end;
+  justify-content: flex-end;
   position: relative;
   top:-20px;
   left:25px;
@@ -579,17 +579,19 @@ code {
 .learn-image img {
   width: 100%;
   height: 70%;
+  padding-left: 50px;
 }
 
 .learn-container {
   margin-left: auto;
-  width: 50%;
+  width:40%;
   height: 70%;
   margin: auto;
 }
 
 .learn-container h1 {
   color: #256e53;
+  text-overflow: ellipsis;
 }
 
 .icon-input-container {
