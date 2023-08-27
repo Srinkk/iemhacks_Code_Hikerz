@@ -1,12 +1,10 @@
 const asynchandler = require('express-async-handler')
 
-const VIDEO_BASE_URL = "http://127.0.0.1:5002"
-const BOOKS_BASE_URL = "http://127.0.0.1:5003"
-const MUSIC_BASE_URL = "http://127.0.0.1:5004"
+const BASE_URL = "http://127.0.0.1:5000"
 
-const videoApiURL = `${VIDEO_BASE_URL}/getVideos`
-const booksApiURL = `${BOOKS_BASE_URL}/getBooks`
-const musicApiURL = `${MUSIC_BASE_URL}/getMusics`
+const videoApiURL = `${BASE_URL}/video/getVideos`
+const booksApiURL = `${BASE_URL}/books/getBooks`
+const musicApiURL = `${BASE_URL}/music/getMusics`
 
 const getVideo = asynchandler((req, res) => {
     const { preferences, currentEmotion } = req.body
@@ -25,6 +23,7 @@ const getVideo = asynchandler((req, res) => {
             return res.status(200).json({ videoIds: videoIds })
         })
         .catch(error => {
+            console.log("This is the error: " , error)
             return res.status(500).json({ message: `An error occured: ${error}` })
         })
     } catch (error) {
@@ -50,6 +49,7 @@ const getMusic = asynchandler((req, res) => {
             return res.status(200).json({ musicIds: musicIds })
         })
         .catch(error => {
+            console.log("This is the error: " , error)
             return res.status(500).json({ message: `An error occured: ${error}` })
         })
     } catch (error) {
@@ -79,6 +79,7 @@ const getBooks = asynchandler((req, res) => {
             return res.status(200).json({ books: books })
         })
         .catch(error => {
+            console.log("This is the error: " , error)
             return res.status(500).json({ message: `An error occured: ${error}` })
         })
     } catch (error) {
