@@ -32,7 +32,7 @@ const Home = () => {
               <b>Stronger Self</b>
             </h2>
             <p className="text">
-              Emotion promised to deliever every possible way to contribute to
+              Vitalize Mind promised to deliever every possible way to contribute to
               the well being of each individual. The betterment of mental health
               is an essential and ongoing endeavor that seeks to enhance the
               overall well-being of individuals and communities. Through

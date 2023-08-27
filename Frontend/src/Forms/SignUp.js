@@ -207,7 +207,11 @@ const SignUp = () => {
 											/>
 											</div>
 										</Form.Group>
-										{/* ... other form groups ... */}
+										{err?.length? (
+											<div><h6 className='err_message'>{err}</h6></div>
+										):<div/>
+                      }
+									
 										<div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
 											<Button
 												variant="primary"

@@ -36,6 +36,8 @@ import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import Preference from "./Preference";
+import Chatbot from "./Chatbot";
+
 
 const drawerWidth = 240;
 
@@ -297,111 +299,111 @@ export default function Dashboard() {
 		}
 	};
 
-	return (
-		<Box
-		style={{
-			backgroundColor: "rgb(166 224 171 / 47%)",
-			height: "100vh",
-			width: "100%",
-			overflow: "auto",
-			// display: "flex",
-			// justifyContent: "center",
-		}}
-		>
-		<Box sx={{ display: "flex" }}>
-			<CssBaseline />
-			<AppBar
-			position="fixed"
-			open={open}
-			style={{ backgroundColor: "#ffff" }}
-			>
-			<Toolbar>
-				<IconButton
-				color="white"
-				aria-label="open drawer"
-				onClick={handleDrawerOpen}
-				edge="start"
-				sx={{
-					marginRight: 5,
-					...(open && { display: "none" }),
-					color: "#597c59",
-				}}
-				>
-				<MenuIcon />
-				</IconButton>
-				<Typography
-				variant="h6"
-				noWrap
-				component="div"
-				style={{ color: "#256e53", fontWeight: "600" }}
-				>
-				Dashboard
-				</Typography>
-				<List style={{ color: "#33916e", fontWeight: 400 }}>
-				<ListItem>
-					<ListItemButton
-					onClick={() =>
-						navigate("/dashboard", { state: { _id: id, name: user } })
-					}
-					>
-					<ListItemText>Welcome {user}</ListItemText>
-					</ListItemButton>
-					<ListItemButton
-					onClick={() =>
-						navigate("/extension", {
-						state: {
-							_id: id,
-							name: user,
-							preferStatus: preferStatus,
-						},
-						})
-					}
-					>
-					<ListItemText>Get Extension</ListItemText>
-					</ListItemButton>
-				</ListItem>
-				</List>
-				<Box
-				sx={{
-					flexGrow: 1,
-					display: { xs: "none", md: "flex" },
-					justifyContent: "flex-end",
-					marginRight: "auto",
-				}}
-				>
-				<FormControl style={{ width: "250px" }}>
-					<InputLabel id="demo-simple-select-label">
-					How are you feeling?
-					</InputLabel>
-					<Select
-					labelId="demo-simple-select-label"
-					id="demo-simple-select"
-					value={currentEmotion}
-					onChange={handleOptionClicked}
-					label="How are you feeling"
-					>
-					<MenuItem value="Happy">Happy</MenuItem>
-					<MenuItem value="Sad">Sad</MenuItem>
-					<MenuItem value="Anxious">Anxious</MenuItem>
-					<MenuItem value="Angry">Angry</MenuItem>
-					<MenuItem value="Depressed">Depressed</MenuItem>
-					<MenuItem value="Stressed">Stresse</MenuItem>
-					</Select>
-				</FormControl>
-				</Box>
-				{/* <ListItemButton> */}
-				<ListItemIcon
-				style={{
-					color: "#33916e",
-					//color: "#b75886",
-					marginLeft: "auto",
-					padding: "20px",
-					cursor: "pointer",
-				}}
-				onClick={() => accountDropDown()}
-				>
-				<AccountCircleIcon style={{ fontSize: "40px" }} />
-				</ListItemIcon>
+  return (
+    <Box
+      style={{
+        backgroundColor: "rgb(166 224 171 / 47%)",
+        height: "100vh",
+        width: "100%",
+        overflow: "auto",
+        // display: "flex",
+        // justifyContent: "center",
+      }}
+    >
+      <Box sx={{ display: "flex" }}>
+        <CssBaseline />
+        <AppBar
+          position="fixed"
+          open={open}
+          style={{ backgroundColor: "#ffff" }}
+        >
+          <Toolbar>
+            <IconButton
+              color="white"
+              aria-label="open drawer"
+              onClick={handleDrawerOpen}
+              edge="start"
+              sx={{
+                marginRight: 5,
+                ...(open && { display: "none" }),
+                color: "#597c59",
+              }}
+            >
+              <MenuIcon />
+            </IconButton>
+            <Typography
+              variant="h6"
+              noWrap
+              component="div"
+              style={{ color: "#256e53", fontWeight: "600" }}
+            >
+              Dashboard
+            </Typography>
+            <List style={{ color: "#33916e", fontWeight: 400 }}>
+              <ListItem>
+                <ListItemButton
+                  onClick={() =>
+                    navigate("/dashboard", { state: { _id: id, name: user } })
+                  }
+                >
+                  <ListItemText>Welcome {user}</ListItemText>
+                </ListItemButton>
+                <ListItemButton
+                  onClick={() =>
+                    navigate("/extension", {
+                      state: {
+                        _id: id,
+                        name: user,
+                        preferStatus: preferStatus,
+                      },
+                    })
+                  }
+                >
+                  <ListItemText>Get Extension</ListItemText>
+                </ListItemButton>
+              </ListItem>
+            </List>
+            <Box
+              sx={{
+                flexGrow: 1,
+                display: { xs: "none", md: "flex" },
+                justifyContent: "flex-end",
+                marginRight: "auto",
+              }}
+            >
+              <FormControl style={{ width: "250px" }}>
+                <InputLabel id="demo-simple-select-label">
+                  How are you feeling?
+                </InputLabel>
+                <Select
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  value={currentEmotion}
+                  onChange={handleOptionClicked}
+                  label="How are you feeling"
+                >
+                  <MenuItem value="Happy">Happy</MenuItem>
+                  <MenuItem value="Sad">Sad</MenuItem>
+                  <MenuItem value="Anxious">Anxious</MenuItem>
+                  <MenuItem value="Angry">Angry</MenuItem>
+                  <MenuItem value="Depressed">Depressed</MenuItem>
+                  <MenuItem value="Stressed">Stress</MenuItem>
+                </Select>
+              </FormControl>
+            </Box>
+            {/* <ListItemButton> */}
+            <ListItemIcon
+              style={{
+                color: "#33916e",
+                //color: "#b75886",
+                marginLeft: "auto",
+                padding: "20px",
+                cursor: "pointer",
+              }}
+              onClick={() => accountDropDown()}
+            >
+              <AccountCircleIcon style={{ fontSize: "40px" }} />
+            </ListItemIcon>
 
 				{/* </ListItemButton> */}
 			</Toolbar>
@@ -611,14 +613,14 @@ export default function Dashboard() {
 						minWidth: 0,
 						mr: open ? 3 : "auto",
 						justifyContent: "center",
-						color: "white",
+						color: "black",
 						}}
 					>
 						<AssistantIcon />
 					</ListItemIcon>
 					<ListItemText
 						primary="ChatBot"
-						sx={{ opacity: open ? 1 : 0 }}
+						sx={{ opacity: open ? 1 : 0 , color:"black"}}
 					/>
 					</ListItemButton>
 				</ListItem>
@@ -658,8 +660,8 @@ export default function Dashboard() {
 			<DrawerHeader />
 			{chatBotSelected === true ? (
 			<div className="chat_container">
-				{/* <ChatBot /> */}
-				<h1>chatbot</h1>
+				<Chatbot />
+			
 			</div>
 			) : (
 			<div />
