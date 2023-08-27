@@ -4,11 +4,10 @@ from flask_cors import CORS
 import requests
 from langdetect import detect
 from EmoBooksDict import get_keywords
+from api_keys import my_api_key
 
 app = Flask(__name__)
 CORS(app, resources={r"/getBooks": {"origins": { "http://localhost:3500/content/books" } }})
-
-my_api_key = "AIzaSyC3wv3am_QyPy6F1db_KI74Bio4WuNkAj4"
 
 books = build('books', 'v1', developerKey = my_api_key)
 

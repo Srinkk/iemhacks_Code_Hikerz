@@ -4,11 +4,10 @@ from flask_cors import CORS
 import requests
 from langdetect import detect
 from EmoMusicDict import get_keywords
+from api_keys import my_api_key
 
 app = Flask(__name__)
 CORS(app, resources={r"/getMusics": {"origins": { "http://localhost:3500/content/music" } }})
-
-my_api_key = "AIzaSyC3wv3am_QyPy6F1db_KI74Bio4WuNkAj4"
 
 @app.route('/getMusics', methods = ['POST'])
 def search_musics():
