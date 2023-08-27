@@ -71,22 +71,6 @@ const EditProfile = () => {
       });
   }, []);
 
-<<<<<<< HEAD
-  const [checked_video, setChecked_video] = useState({
-    cats: false,
-    dogs: false,
-  });
-
-  const [checked_music, setChecked_music] = useState({
-    rahman: false,
-    arijit: false,
-  });
-
-  const [checked_books, setChecked_books] = useState({
-    thriller: false,
-    romance: false,
-  });
-=======
 	
 	const [checked_video, setChecked_video] = useState({
 		web_series:false,
@@ -111,7 +95,6 @@ const EditProfile = () => {
 		 classic:false,
 		 best_seller:false,
 	   });
->>>>>>> c2bd0fbab676c73e0d9234f1c5c228746fe32dfa
 
   const handleUpdate = async (e) => {
     e.preventDefault();
@@ -137,27 +120,6 @@ const EditProfile = () => {
       }
     }
 
-<<<<<<< HEAD
-    for (const books in checked_books) {
-      const status = checked_books[books];
-      if (status === true) {
-        tempBooksArr.push(books);
-      }
-    }
-    setVideoCategories((videoCategories) => [
-      ...videoCategories,
-      ...tempVidArr,
-    ]);
-    setMusicCategories(tempMusicArr);
-    setBooksCategories(tempBooksArr);
-    console.log(
-      "After Submit: ",
-      videoCategories,
-      musicCategories,
-      booksCategories
-    );
-    console.log("After Edit : ", name, email, recipient1, recipient2);
-=======
 		const handleChangeSubVideo = (event) => {
 			const {name,checked} = event.target;
 			setChecked_video(checked_video=>({
@@ -215,7 +177,6 @@ const EditProfile = () => {
 				setVideo(false)
 				setMusic(false)
 				setBooks(!books)
->>>>>>> c2bd0fbab676c73e0d9234f1c5c228746fe32dfa
 
     axios
       .patch("http://localhost:3500/user", {
@@ -241,19 +202,6 @@ const EditProfile = () => {
       });
   };
 
-<<<<<<< HEAD
-  const handleChangeSubVideo = (event) => {
-    const { name, checked } = event.target;
-    setChecked_video((checked_video) => ({
-      ...checked_video,
-      [name]: checked,
-    }));
-    console.log(name);
-    let tempVidArr = [];
-    tempVidArr.push(name);
-    setVideoCategories(tempVidArr);
-  };
-=======
 							
 			const children_video = (
 				<Box sx={{ display: "flex", flexDirection: "column", ml: 2 }}>
@@ -568,7 +516,6 @@ const EditProfile = () => {
 		</>
 	)
 }
->>>>>>> c2bd0fbab676c73e0d9234f1c5c228746fe32dfa
 
   const handleChangeSubMusic = (event) => {
     const { name, checked } = event.target;
