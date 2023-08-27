@@ -48,7 +48,7 @@ const Extension = () => {
           <ListItemButton
             onClick={() =>
               (window.location.href =
-                "https://github.com/goblin45/Mental_App_Dev_Static/releases/download/v1.0.0/Extension.zip")
+                "https://github.com/goblin45/iemhacks_Code_Hikerz/releases/download/Extension/Vitalize.Mind.Extension.zip")
             }
           >
             <a className="link_ex">Download Extension</a>
