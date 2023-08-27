@@ -25,11 +25,10 @@ const Books = ({ currentEmotion, preferences }) => {
 	},[err])
 
 	return (
-		<div className="books">
 			<div className="container">
 				<Row>
 				<div className="book_boxes">
-					<div>
+					<div >
 					{bookdata?.length > 0 ? (
 						bookdata.map((book) => {
 						let title = book.volumeInfo.title;
@@ -59,7 +58,7 @@ const Books = ({ currentEmotion, preferences }) => {
 						})
 					) : (
 						<div className="loading">
-							<Spinner animation="border" role="status"></Spinner>
+							<Spinner animation="border" role="status" style={{ color: "#616b74" }}></Spinner>
 							<p>Loading...</p>
 						</div>
 					)}
@@ -67,7 +66,7 @@ const Books = ({ currentEmotion, preferences }) => {
 				</div>
 				</Row>
 			</div>
-		</div>
+		
 	);
 };
 

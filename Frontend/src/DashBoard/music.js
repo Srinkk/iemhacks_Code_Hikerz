@@ -38,7 +38,7 @@ const Music = ({ currentEmotion, preferences }) => {
 						))
 						) : (
 						<div className="loading">
-							<Spinner animation="border" role="status"></Spinner>
+							<Spinner animation="border" role="status" style={{ color: "#616b74" }}></Spinner>
 							<p>Loading...</p>
 						</div>
 						)}
