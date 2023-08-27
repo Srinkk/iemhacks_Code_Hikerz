@@ -384,7 +384,7 @@ export default function Dashboard() {
                   <MenuItem value="Anxious">Anxious</MenuItem>
                   <MenuItem value="Angry">Angry</MenuItem>
                   <MenuItem value="Depressed">Depressed</MenuItem>
-                  <MenuItem value="Stressed">Stresse</MenuItem>
+                  <MenuItem value="Stressed">Stress</MenuItem>
                 </Select>
               </FormControl>
             </Box>
