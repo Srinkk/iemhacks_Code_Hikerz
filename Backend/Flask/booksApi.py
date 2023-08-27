@@ -8,7 +8,7 @@ from EmoBooksDict import get_keywords
 app = Flask(__name__)
 CORS(app, resources={r"/getBooks": {"origins": { "http://localhost:3500/content/books" } }})
 
-my_api_key = ""
+my_api_key = "AIzaSyC3wv3am_QyPy6F1db_KI74Bio4WuNkAj4"
 
 books = build('books', 'v1', developerKey = my_api_key)
 
@@ -17,6 +17,8 @@ def search_books():
     data_received = request.json
     keywords = []
     preferences = []
+
+    print(data_received)
 
     if 'preferences' in data_received:
         preferences = data_received['preferences']
@@ -29,11 +31,11 @@ def search_books():
     preferences_str = ""
     for keyword in keywords:
         if (len(keywords_str) > 0):
-            keywords_str += "|"
+            keywords_str += " "
         keywords_str += keyword
     for preference in preferences:
         if (len(preferences_str) > 0):
-            preferences_str += "|"
+            preferences_str += " "
         preferences_str += preference
 
     booksToShow = []

@@ -10,7 +10,7 @@ from EmoVideoDict import get_keywords
 app = Flask(__name__)
 CORS(app, resources={r"/getVideos": {"origins": { "http://localhost:3500/content/video" } }})
 
-my_api_key = ""
+my_api_key = "AIzaSyC3wv3am_QyPy6F1db_KI74Bio4WuNkAj4"
 
 @app.route('/getVideos', methods = ['POST'])
 def search_videos():

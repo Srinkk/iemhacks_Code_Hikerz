@@ -8,7 +8,7 @@ from EmoMusicDict import get_keywords
 app = Flask(__name__)
 CORS(app, resources={r"/getMusics": {"origins": { "http://localhost:3500/content/music" } }})
 
-my_api_key = ""
+my_api_key = "AIzaSyC3wv3am_QyPy6F1db_KI74Bio4WuNkAj4"
 
 @app.route('/getMusics', methods = ['POST'])
 def search_musics():

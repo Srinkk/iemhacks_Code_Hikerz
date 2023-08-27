@@ -93,6 +93,24 @@ const getUser = asynchandler(async(req, res) => {
     }
 })
 
+const getUserDetails = asynchandler(async(req, res) => {
+    const { _id } = req.body
+
+    const user = await User.findById({ _id })
+
+    if (!user) {
+        return res.status(400).json({ message: "Id invalid." })
+    } else {
+        const userDetails = {
+            e_mail: user.e_mail,
+            alertRecipients: user.alertRecipients,
+            name: user.name,
+            preferences: user.preferences
+        }
+        return res.status(200).json({ user : userDetails })
+    }
+})
+
 //@desc update user
 //@route PATCH
 const updateUser = asynchandler(async(req, res) => {
@@ -411,6 +429,7 @@ const sendAlert = asynchandler(async (req, res) => {
 module.exports = {
     createNewUser,
     getUser,
+    getUserDetails,
     updateUser,
     setPreferences,
     getPreferences,

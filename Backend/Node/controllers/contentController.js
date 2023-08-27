@@ -60,7 +60,9 @@ const getMusic = asynchandler((req, res) => {
 const getBooks = asynchandler((req, res) => {
     const { preferences, currentEmotion } = req.body
 
-    // console.log(preferences, currentEmotion)
+    if (!preferences || !currentEmotion) {
+        return res.status(400).json({ message: 'Not enough data for fetching books.' })
+    }
 
     try {
         fetch(booksApiURL, {

@@ -8,8 +8,7 @@ import Truncate from "./Truncate";
 
 const Books = ({ currentEmotion, preferences }) => {
   const [bookdata, setBookdata] = useState([]);
-
-  const api_key = "";
+  const [err, setErr] = useState()
 
   // const booksId = [
   //   {
@@ -73,30 +72,34 @@ const Books = ({ currentEmotion, preferences }) => {
   //     volumeInfo: [Object]
   //   }
   // ]
-  useEffect(() => {
-    console.log(currentEmotion);
-    axios
-      .get(
-        "https://www.googleapis.com/books/v1/volumes?q=currentEmotion&key=AIzaSyC3wv3am_QyPy6F1db_KI74Bio4WuNkAj4&maxResults=8"
-      )
-      .then((response) => {
-        console.log(response.data.items);
-        setBookdata(response.data.items);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }, []);
+  // useEffect(() => {
+  //   console.log(currentEmotion);
+  //   axios
+  //     .get(
+  //       "https://www.googleapis.com/books/v1/volumes?q=currentEmotion&key=AIzaSyC3wv3am_QyPy6F1db_KI74Bio4WuNkAj4&maxResults=8"
+  //     )
+  //     .then((response) => {
+  //       console.log(response.data.items);
+  //       setBookdata(response.data.items);
+  //     })
+  //     .catch((err) => {
+  //       console.error(err);
+  //     });
+  // }, []);
 
-  // useEffect(()=>{
-  //   axios.post('http://localhost:3500/content/books', {currentEmotion:currentEmotion, preferences:preferences})
-  //   .then(response=>{
-  //      setBookId(response)
-  //   }).catch(error=>{
-  //     console.error(error)
-  //   }
-  //   )
-  // },[currentEmotion])
+  const bookFetch = () => {
+    axios.post('http://localhost:3500/content/books', {currentEmotion:currentEmotion, preferences:preferences})
+    .then(response=>{
+      setBookdata(response.data.books)
+    }).catch(error=>{
+      console.error("Error fetching books: " + error)
+      setErr(error)
+    }
+    )
+  }
+  useEffect(()=>{
+    bookFetch()
+  },[err])
 
   return (
     <div className="books">
@@ -104,28 +107,29 @@ const Books = ({ currentEmotion, preferences }) => {
         <Row>
           <div className="book_boxes">
             <div>
-              {bookdata?.length ? (
+              {bookdata?.length > 0 ? (
                 bookdata.map((book) => {
                   let title = book.volumeInfo.title;
                   let author = book.volumeInfo.authors;
-                  let thumbnil =
+                  let bookId = book.id
+                  {console.log(title, author, bookId)}
+                  let thumbnail =
                     book.volumeInfo.imageLinks &&
                     book.volumeInfo.imageLinks.smallThumbnail;
-                  if (thumbnil !== undefined) {
+                  if (thumbnail !== undefined && title !== undefined && author !== undefined && bookId !== undefined) {
                     return (
                       <div
                         className="book_card"
                         onClick={() =>
                           (window.location.href =
-                            "http://books.google.co.in/books?id=bY2wCgAAQBAJ&printsec=frontcover&dq=happy&hl=&cd=1&source=gbs_api")
+                            `http://books.google.co.in/books?id=${bookId}&printsec=frontcover&hl=&cd=1&source=gbs_api`)
                         }
                       >
-                        <img src={thumbnil} alt="" />
+                        <img src={thumbnail} alt="" />
                         <div className="bottom">
                           <Truncate title={title} maxLength={15} />
                           <Truncate title={author} maxLength={10} />
                         </div>
-                        {/* <Modal show={show} item={book}  /> */}
                       </div>
                     );
                   }
