@@ -6,11 +6,10 @@ from flask_cors import CORS
 import requests
 from Sentiment import roberta_polarity_score
 from EmoVideoDict import get_keywords
+from api_keys import my_api_key
 
 app = Flask(__name__)
 CORS(app, resources={r"/getVideos": {"origins": { "http://localhost:3500/content/video" } }})
-
-my_api_key = "AIzaSyC3wv3am_QyPy6F1db_KI74Bio4WuNkAj4"
 
 @app.route('/getVideos', methods = ['POST'])
 def search_videos():
