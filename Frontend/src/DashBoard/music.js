@@ -44,7 +44,7 @@ const Music = ({ currentEmotion, preferences }) => {
                 ></iframe>
               ))
             ) : (
-              <div className="loading" style={{ color: "#616b74" }}>
+              <div className="loading">
                 <Spinner animation="border" role="status"></Spinner>
                 <p>Loading...</p>
               </div>
