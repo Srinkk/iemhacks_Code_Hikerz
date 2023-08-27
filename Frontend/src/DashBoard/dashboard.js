@@ -300,9 +300,6 @@ export default function Dashboard() {
   };
 
   return (
-<<<<<<< HEAD
-    <Box className="dashboard-container">
-=======
     <Box
       style={{
         backgroundColor: "rgb(166 224 171 / 47%)",
@@ -313,7 +310,6 @@ export default function Dashboard() {
         // justifyContent: "center",
       }}
     >
->>>>>>> c2bd0fbab676c73e0d9234f1c5c228746fe32dfa
       <Box sx={{ display: "flex" }}>
         <CssBaseline />
         <AppBar
@@ -339,11 +335,7 @@ export default function Dashboard() {
               variant="h6"
               noWrap
               component="div"
-<<<<<<< HEAD
-              sx={{ color: "#256e53", fontWeight: "600" }}
-=======
               style={{ color: "#256e53", fontWeight: "600" }}
->>>>>>> c2bd0fbab676c73e0d9234f1c5c228746fe32dfa
             >
               Dashboard
             </Typography>
@@ -374,21 +366,12 @@ export default function Dashboard() {
             <Box
               sx={{
                 flexGrow: 1,
-<<<<<<< HEAD
-                display: { xs: "flex", md: "flex" },
-                justifyContent: "flex-end",
-                marginLeft: "auto",
-              }}
-            >
-              <FormControl className="current-emotion-box">
-=======
                 display: { xs: "none", md: "flex" },
                 justifyContent: "flex-end",
                 marginRight: "auto",
               }}
             >
               <FormControl style={{ width: "250px" }}>
->>>>>>> c2bd0fbab676c73e0d9234f1c5c228746fe32dfa
                 <InputLabel id="demo-simple-select-label">
                   How are you feeling?
                 </InputLabel>
@@ -404,11 +387,7 @@ export default function Dashboard() {
                   <MenuItem value="Anxious">Anxious</MenuItem>
                   <MenuItem value="Angry">Angry</MenuItem>
                   <MenuItem value="Depressed">Depressed</MenuItem>
-<<<<<<< HEAD
-                  <MenuItem value="Stressed">Stresse</MenuItem>
-=======
                   <MenuItem value="Stressed">Stress</MenuItem>
->>>>>>> c2bd0fbab676c73e0d9234f1c5c228746fe32dfa
                 </Select>
               </FormControl>
             </Box>
@@ -617,78 +596,6 @@ export default function Dashboard() {
               </ListItem>
             )}
 
-<<<<<<< HEAD
-            {chatBotSelected === true ? (
-              <ListItem
-                sx={{ display: "block" }}
-                onClick={handleChatBotClicked}
-              >
-                <ListItemButton
-                  sx={{
-                    minHeight: 48,
-                    justifyContent: open ? "initial" : "center",
-                    px: 2.5,
-                  }}
-                >
-                  <ListItemIcon
-                    sx={{
-                      minWidth: 0,
-                      mr: open ? 3 : "auto",
-                      justifyContent: "center",
-                      color: "white",
-                    }}
-                  >
-                    <AssistantIcon />
-                  </ListItemIcon>
-                  <ListItemText
-                    primary="ChatBot"
-                    sx={{ opacity: open ? 1 : 0 }}
-                  />
-                </ListItemButton>
-              </ListItem>
-            ) : (
-              <ListItem
-                disabled
-                sx={{ display: "block" }}
-                onClick={handleChatBotClicked}
-              >
-                <ListItemButton
-                  sx={{
-                    minHeight: 48,
-                    justifyContent: open ? "initial" : "center",
-                    px: 2.5,
-                  }}
-                >
-                  <ListItemIcon
-                    sx={{
-                      minWidth: 0,
-                      mr: open ? 3 : "auto",
-                      justifyContent: "center",
-                      color: "white",
-                    }}
-                  >
-                    <AssistantIcon />
-                  </ListItemIcon>
-                  <ListItemText
-                    primary="ChatBot"
-                    sx={{ opacity: open ? 1 : 0 }}
-                  />
-                </ListItemButton>
-              </ListItem>
-            )}
-          </List>
-        </Drawer>
-
-        <DrawerHeader />
-        {chatBotSelected === true ? (
-          <div className="chat_container">
-            {/* <ChatBot /> */}
-            <h1>chatbot</h1>
-          </div>
-        ) : (
-          <div />
-        )}
-=======
 				{chatBotSelected === true ? (
 				<ListItem
 					sx={{ display: "block" }}
@@ -759,7 +666,6 @@ export default function Dashboard() {
 			) : (
 			<div />
 			)}
->>>>>>> c2bd0fbab676c73e0d9234f1c5c228746fe32dfa
 
         {customComponent()}
         {openAccountDropDown && (
