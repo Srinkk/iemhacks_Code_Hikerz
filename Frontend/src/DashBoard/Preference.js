@@ -29,8 +29,8 @@ export default function Preference({ _id, setPreferStatus, preferStatus }) {
    old_movies:false,
    space:false,
    nature:false,
-   motivational:false,
-   productive:false
+   motivational:false
+   
   });
 
   const [checked_music, setChecked_music] = useState({
@@ -42,13 +42,10 @@ export default function Preference({ _id, setPreferStatus, preferStatus }) {
 
   const [checked_books, setChecked_books] = useState({
     thriller: false,
-    romance: false,
-    novel:false,
+    romantic: false,
     fiction:false,
     classic:false,
     best_seller:false,
-    short_stories:false,
-    humour:false
   });
 
   const [formsubmitted, setFormsubmitted] = useState(false);
@@ -268,11 +265,21 @@ export default function Preference({ _id, setPreferStatus, preferStatus }) {
         }
       />
        <FormControlLabel
-        label="Old Movies"
+        label="Nature"
         control={
           <Checkbox
-            checked={checked_video.old_movies}
-            name="old_movies"
+            checked={checked_video.nature}
+            name="nature"
+            onChange={handleChangeSubVideo}
+          />
+        }
+      />
+      <FormControlLabel
+        label="Motivational"
+        control={
+          <Checkbox
+            checked={checked_video.motivational}
+            name="motivational"
             onChange={handleChangeSubVideo}
           />
         }
@@ -284,21 +291,41 @@ export default function Preference({ _id, setPreferStatus, preferStatus }) {
     <Box sx={{ display: "flex", flexDirection: "column", ml: 2 }}>
       <FormLabel className="form_sub">What type of music you like</FormLabel>
       <FormControlLabel
-        label="Rahman"
+        label="Lofi"
         control={
           <Checkbox
-            checked={checked_music.rahman}
-            name="rahman"
+            checked={checked_music.lofi}
+            name="lofi"
             onChange={handleChangeSubMusic}
           />
         }
       />
       <FormControlLabel
-        label="Arijit"
+        label="Indian Music"
         control={
           <Checkbox
-            checked={checked_music.arijit}
-            name="arijit"
+            checked={checked_music.indian_music}
+            name="indian_music"
+            onChange={handleChangeSubMusic}
+          />
+        }
+      />
+       <FormControlLabel
+        label="Western Music"
+        control={
+          <Checkbox
+            checked={checked_music.western_music}
+            name="western_music"
+            onChange={handleChangeSubMusic}
+          />
+        }
+      />
+       <FormControlLabel
+        label="Classical Music"
+        control={
+          <Checkbox
+            checked={checked_music.classical_music}
+            name="classical_music"
             onChange={handleChangeSubMusic}
           />
         }
@@ -320,11 +347,41 @@ export default function Preference({ _id, setPreferStatus, preferStatus }) {
         }
       />
       <FormControlLabel
-        label="Romance"
+        label="Romantic"
         control={
           <Checkbox
-            checked={checked_books.romance}
-            name="romance"
+            checked={checked_books.romantic}
+            name="romantic"
+            onChange={handleChangeSubBooks}
+          />
+        }
+      />
+       <FormControlLabel
+        label="Fiction"
+        control={
+          <Checkbox
+            checked={checked_books.fiction}
+            name="fiction"
+            onChange={handleChangeSubBooks}
+          />
+        }
+      />
+       <FormControlLabel
+        label="Classic"
+        control={
+          <Checkbox
+            checked={checked_books.classic}
+            name="classic"
+            onChange={handleChangeSubBooks}
+          />
+        }
+      />
+       <FormControlLabel
+        label="Best Seller"
+        control={
+          <Checkbox
+            checked={checked_books.best_seller}
+            name="best_seller"
             onChange={handleChangeSubBooks}
           />
         }

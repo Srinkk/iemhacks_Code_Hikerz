@@ -56,20 +56,30 @@ const EditProfile = () => {
     }, [])
   
 
-	const[checked_video,setChecked_video]=useState({
-		cats:false,
-		dogs:false,
-	})
-
-	const [checked_music,setChecked_music]=useState({
-		rahman:false,
-		arijit:false
-	})
-
-	const[checked_books,setChecked_books]=useState({
-		thriller:false,
-	romance:false
-	})
+	
+	const [checked_video, setChecked_video] = useState({
+		web_series:false,
+		old_movies:false,
+		space:false,
+		nature:false,
+		motivational:false
+		
+	   });
+	 
+	   const [checked_music, setChecked_music] = useState({
+		lofi:false,
+		indian_music:false,
+		western_music:false,
+		classical_music:false
+	   });
+	 
+	   const [checked_books, setChecked_books] = useState({
+		 thriller: false,
+		 romantic: false,
+		 fiction:false,
+		 classic:false,
+		 best_seller:false,
+	   });
 
 	const handleUpdate = async(e) => {
 		e.preventDefault();
@@ -170,6 +180,7 @@ const EditProfile = () => {
 		
 		const handleVideoChange = (event) => {
 			const { name, checked } = event.target;
+			
 			setVideo(!video)
 			setMusic(false)
 			setBooks(false)
@@ -185,53 +196,171 @@ const EditProfile = () => {
 		
 			const handleBooksChange = (event) => {
 				const { name, checked } = event.target;
+			
 				setVideo(false)
 				setMusic(false)
 				setBooks(!books)
 
 				}
 
-				const children_video = (
-					<Box sx={{ display: 'flex', flexDirection: 'column', ml: 2 }}>
-					<FormLabel className='form_sub'>What type of videos you like</FormLabel>
-					<FormControlLabel
-						label="Cats"
-						control={<Checkbox checked={checked_video.cats} name='cats' onChange={handleChangeSubVideo} />}
+							
+			const children_video = (
+				<Box sx={{ display: "flex", flexDirection: "column", ml: 2 }}>
+				<FormLabel className="form_sub">What type of videos you like</FormLabel>
+				<FormControlLabel
+					label="Web Series"
+					control={
+					<Checkbox
+						checked={checked_video.web_series}
+						name="web_series"
+						onChange={handleChangeSubVideo}
 					/>
-					<FormControlLabel
-						label="Dogs"
-						control={<Checkbox checked={checked_video.dogs} name='dogs' onChange={handleChangeSubVideo} />}
+					}
+				/>
+				<FormControlLabel
+					label="Space"
+					control={
+					<Checkbox
+						checked={checked_video.space}
+						name="space"
+						onChange={handleChangeSubVideo}
 					/>
-					</Box>
-				);
+					}
+				/>
+				<FormControlLabel
+					label="Old Movies"
+					control={
+					<Checkbox
+						checked={checked_video.old_movies}
+						name="old_movies"
+						onChange={handleChangeSubVideo}
+					/>
+					}
+				/>
+				<FormControlLabel
+					label="Nature"
+					control={
+					<Checkbox
+						checked={checked_video.nature}
+						name="nature"
+						onChange={handleChangeSubVideo}
+					/>
+					}
+				/>
+				<FormControlLabel
+					label="Motivational"
+					control={
+					<Checkbox
+						checked={checked_video.motivational}
+						name="motivational"
+						onChange={handleChangeSubVideo}
+					/>
+					}
+				/>
+				</Box>
+			);
 				
-				const children_music = (
-					<Box sx={{ display: 'flex', flexDirection: 'column', ml: 2 }}>
-					<FormLabel className='form_sub'>What type of music you like</FormLabel>
-					<FormControlLabel
-						label="Rahman"
-						control={<Checkbox checked={checked_music.rahman} name='rahman' onChange={handleChangeSubMusic} />}
-					/>
-					<FormControlLabel
-						label="Arijit"
-						control={<Checkbox checked={checked_music.arijit} name='arijit' onChange={handleChangeSubMusic} />}
-					/>
-					</Box>
-				);
-				
-				const children_books=(
-					<Box sx={{ display: 'flex', flexDirection: 'column', ml: 2 }}>
-					<FormLabel className='form_sub'>What type of book you like</FormLabel>
-					<FormControlLabel
-						label="Thriller"
-						control={<Checkbox checked={checked_books.thriller} name='thriller' onChange={handleChangeSubBooks} />}
-					/>
-					<FormControlLabel
-						label="Romance"
-						control={<Checkbox checked={checked_books.romance} name='romance' onChange={handleChangeSubBooks} />}
-					/>
-					</Box>
-				)
+			const children_music = (
+				<Box sx={{ display: "flex", flexDirection: "column", ml: 2 }}>
+				  <FormLabel className="form_sub">What type of music you like</FormLabel>
+				  <FormControlLabel
+					label="Lofi"
+					control={
+					  <Checkbox
+						checked={checked_music.lofi}
+						name="lofi"
+						onChange={handleChangeSubMusic}
+					  />
+					}
+				  />
+				  <FormControlLabel
+					label="Indian Music"
+					control={
+					  <Checkbox
+						checked={checked_music.indian_music}
+						name="indian_music"
+						onChange={handleChangeSubMusic}
+					  />
+					}
+				  />
+				   <FormControlLabel
+					label="Western Music"
+					control={
+					  <Checkbox
+						checked={checked_music.western_music}
+						name="western_music"
+						onChange={handleChangeSubMusic}
+					  />
+					}
+				  />
+				   <FormControlLabel
+					label="Classical Music"
+					control={
+					  <Checkbox
+						checked={checked_music.classical_music}
+						name="classical_music"
+						onChange={handleChangeSubMusic}
+					  />
+					}
+				  />
+				</Box>
+			  );
+			  const children_books = (
+				<Box sx={{ display: "flex", flexDirection: "column", ml: 2 }}>
+				  <FormLabel className="form_sub">What type of book you like</FormLabel>
+				  <FormControlLabel
+					label="Thriller"
+					control={
+					  <Checkbox
+						checked={checked_books.thriller}
+						name="thriller"
+						onChange={handleChangeSubBooks}
+					  />
+					}
+				  />
+				  <FormControlLabel
+					label="Romantic"
+					control={
+					  <Checkbox
+						checked={checked_books.romantic}
+						name="romantic"
+						onChange={handleChangeSubBooks}
+					  />
+					}
+				  />
+				   <FormControlLabel
+					label="Fiction"
+					control={
+					  <Checkbox
+						checked={checked_books.fiction}
+						name="fiction"
+						onChange={handleChangeSubBooks}
+					  />
+					}
+				  />
+				   <FormControlLabel
+					label="Classic"
+					control={
+					  <Checkbox
+						checked={checked_books.classic}
+						name="classic"
+						onChange={handleChangeSubBooks}
+					  />
+					}
+				  />
+				   <FormControlLabel
+					label="Best Seller"
+					control={
+					  <Checkbox
+						checked={checked_books.best_seller}
+						name="best_seller"
+						onChange={handleChangeSubBooks}
+					  />
+					}
+				  />
+				</Box>
+			  );
+			
 	
 	return (
 		<>
@@ -256,7 +385,7 @@ const EditProfile = () => {
 							<FontAwesomeIcon icon={faUser} className="fa-lg me-3 fa-fw" />
 							<div className="form-outline flex-fill mb-0">
 							<Form.Label htmlFor="form3Example1c" className='form_label'><b>Name</b></Form.Label>
-							<Form.Control type="text"  value={username} onChange={(e)=>setName(e.target.value)} />
+							<Form.Control type="text"  value={name} onChange={(e)=>setName(e.target.value)} />
 							
 							</div>
 						</Form.Group>
@@ -369,7 +498,7 @@ const EditProfile = () => {
 						</div>
 						<div className='edit_buttons'>
 						<div className='edit'>
-							<Button variant='primary' onClick={handleUpdate}>Edit Profile</Button>
+							<Button  onClick={handleUpdate}>Edit Profile</Button>
 						</div>
 						<div className='cancel'>
 							<Button variant='secondary' onClick={()=>navigate('/dashboard',{state:{_id:_id,name:name}})}>Cancel</Button>

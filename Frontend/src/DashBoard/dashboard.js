@@ -36,6 +36,8 @@ import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import Preference from "./Preference";
+import Chatbot from "./Chatbot";
+
 
 const drawerWidth = 240;
 
@@ -385,7 +387,7 @@ export default function Dashboard() {
                   <MenuItem value="Anxious">Anxious</MenuItem>
                   <MenuItem value="Angry">Angry</MenuItem>
                   <MenuItem value="Depressed">Depressed</MenuItem>
-                  <MenuItem value="Stressed">Stresse</MenuItem>
+                  <MenuItem value="Stressed">Stress</MenuItem>
                 </Select>
               </FormControl>
             </Box>
@@ -611,14 +613,14 @@ export default function Dashboard() {
 						minWidth: 0,
 						mr: open ? 3 : "auto",
 						justifyContent: "center",
-						color: "white",
+						color: "black",
 						}}
 					>
 						<AssistantIcon />
 					</ListItemIcon>
 					<ListItemText
 						primary="ChatBot"
-						sx={{ opacity: open ? 1 : 0 }}
+						sx={{ opacity: open ? 1 : 0 , color:"black"}}
 					/>
 					</ListItemButton>
 				</ListItem>
@@ -658,8 +660,8 @@ export default function Dashboard() {
 			<DrawerHeader />
 			{chatBotSelected === true ? (
 			<div className="chat_container">
-				{/* <ChatBot /> */}
-				<h1>chatbot</h1>
+				<Chatbot />
+			
 			</div>
 			) : (
 			<div />
