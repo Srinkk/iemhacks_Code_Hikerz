@@ -58,14 +58,14 @@ function NavBar() {
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
-              fontWeight: 700,
+              fontFamily: "sans-serif",
+              fontWeight:700,
               letterSpacing: ".3rem",
               color: "#103b28",
               textDecoration: "none",
             }}
           >
-            EMOTION
+            Vitalize<br/> Mind
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -140,7 +140,7 @@ function NavBar() {
               textDecoration: "none",
             }}
           >
-            Emotion
+            Vitalize Mind
           </Typography>
           <Box
             sx={{

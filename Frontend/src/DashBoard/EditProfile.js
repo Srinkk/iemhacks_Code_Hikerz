@@ -1,237 +1,383 @@
-import React, { useEffect } from 'react'
-import { useLocation } from 'react-router-dom'
-import { Container, Row, Col, Card, Form, Button, FormGroup, FormControl } from 'react-bootstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faEnvelope, faLock, faKey, faBox ,faPerson} from '@fortawesome/free-solid-svg-icons';
-import axios from 'axios'
-import { useState} from 'react'
-import {FormLabel} from 'react-bootstrap';
-import { FormControlLabel } from '@mui/material';
-import { Checkbox } from '@mui/material';
-import Preference from './Preference';
-import {Box} from '@mui/material';
-import Navbar from '../Navbar/Navbar'
-import { Link, useNavigate } from 'react-router-dom'
+import React, { useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import {
+  Container,
+  Row,
+  Col,
+  Card,
+  Form,
+  Button,
+  FormGroup,
+  FormControl,
+} from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faUser,
+  faEnvelope,
+  faLock,
+  faKey,
+  faBox,
+  faPerson,
+} from "@fortawesome/free-solid-svg-icons";
+import axios from "axios";
+import { useState } from "react";
+import { FormLabel } from "react-bootstrap";
+import { FormControlLabel } from "@mui/material";
+import { Checkbox } from "@mui/material";
+import Preference from "./Preference";
+import { Box } from "@mui/material";
+import Navbar from "../Navbar/Navbar";
+import { Link, useNavigate } from "react-router-dom";
 
 const EditProfile = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
 
-    const location=useLocation()
-    const navigate=useNavigate()
+  const { _id, name } = location.state || {};
 
-    const{_id,name}=location.state || {}
+  const [email, setEmail] = useState("");
+  const [username, setName] = useState(name);
+  const [password, setPassword] = useState("");
+  const [relation1, setRelation1] = useState("");
+  const [alertRecipient1, setAlertRecipient1] = useState("");
+  const [relation2, setRelation2] = useState("");
+  const [alertRecipient2, setAlertRecipient2] = useState("");
 
-    const[email,setEmail]=useState('')
-    const[username,setName]=useState(name)
-    const[password,setPassword]=useState('')
-    const [relation1,setRelation1]=useState('')
-    const [alertRecipient1,setAlertRecipient1]=useState('')
-    const [relation2,setRelation2]=useState('')
-    const [alertRecipient2,setAlertRecipient2]=useState('')
- 
-    const [video,setVideo]=useState(false)
-    const[music,setMusic]=useState(false)
-    const[books,setBooks]=useState(false)
+  const [video, setVideo] = useState(false);
+  const [music, setMusic] = useState(false);
+  const [books, setBooks] = useState(false);
 
-    const [videoCategories, setVideoCategories] = useState([])
-    const [musicCategories, setMusicCategories] = useState([])
-    const [booksCategories, setBooksCategories] = useState([])
+  const [videoCategories, setVideoCategories] = useState([]);
+  const [musicCategories, setMusicCategories] = useState([]);
+  const [booksCategories, setBooksCategories] = useState([]);
 
-    useEffect(() => {
-		axios.post('http://localhost:3500/user/getUserDetails', { _id : _id })
-		.then((response) => {
-			const user = response.data.user
-			setEmail(user.e_mail)
-			setName(user.name)
-			setAlertRecipient1(user.alertRecipients[0].e_mail)
-			setRelation1(user.alertRecipients[0].relation)
-			setAlertRecipient2(user.alertRecipients[1].e_mail)
-			setRelation2(user.alertRecipients[1].relation)
-			setVideoCategories(user.preferences.video)
-			setMusicCategories(user.preferences.music)
-			setBooksCategories(user.preferences.books)
-		})
-		.catch((err) => {
-			console.log(err)
-		})
-    }, [])
+  useEffect(() => {
+    axios
+      .post("http://localhost:3500/user/getUserDetails", { _id: _id })
+      .then((response) => {
+        const user = response.data.user;
+        setEmail(user.e_mail);
+        setName(user.name);
+        setAlertRecipient1(user.alertRecipients[0].e_mail);
+        setRelation1(user.alertRecipients[0].relation);
+        setAlertRecipient2(user.alertRecipients[1].e_mail);
+        setRelation2(user.alertRecipients[1].relation);
+        setVideoCategories(user.preferences.video);
+        setMusicCategories(user.preferences.music);
+        setBooksCategories(user.preferences.books);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+	
+	const [checked_video, setChecked_video] = useState({
+		web_series:false,
+		old_movies:false,
+		space:false,
+		nature:false,
+		motivational:false
+		
+	   });
+	 
+	   const [checked_music, setChecked_music] = useState({
+		lofi:false,
+		indian_music:false,
+		western_music:false,
+		classical_music:false
+	   });
+	 
+	   const [checked_books, setChecked_books] = useState({
+		 thriller: false,
+		 romantic: false,
+		 fiction:false,
+		 classic:false,
+		 best_seller:false,
+	   });
+
+     const handleUpdate = async(e) => {
+      e.preventDefault();
+      let recipient1={relation : relation1,e_mail : alertRecipient1}
+      let recipient2={relation : relation2 ,e_mail : alertRecipient2}
+     
+      const tempVidArr = []
+      const tempMusicArr = []
+      const tempBooksArr = []
+      for (const video in checked_video) {
+        const status = checked_video[video];
+        if (status === true) {
+          tempVidArr.push(video);
+        }
+      }
   
-
-	const[checked_video,setChecked_video]=useState({
-		cats:false,
-		dogs:false,
-	})
-
-	const [checked_music,setChecked_music]=useState({
-		rahman:false,
-		arijit:false
-	})
-
-	const[checked_books,setChecked_books]=useState({
-		thriller:false,
-	romance:false
-	})
-
-	const handleUpdate = async(e) => {
-		e.preventDefault();
-		
-		let recipient1={relation : relation1,e_mail : alertRecipient1}
-		let recipient2={relation : relation2 ,e_mail : alertRecipient2}
-	
-		const tempVidArr = []
-		const tempMusicArr = []
-		const tempBooksArr = []
-
-		for (const video in checked_video) {
-			const status = checked_video[video];
-			if (status === true) {
-				tempVidArr.push(video);
-			}
-		}
-
-		for (const music in checked_music) {
-			const status = checked_music[music];
-			if (status === true) {
-				tempMusicArr.push(music);
-			}
-		}
-
-		for (const books in checked_books) {
-			const status = checked_books[books];
-			if (status === true) {
-				tempBooksArr.push(books);
-			}
-		}
-		setVideoCategories((videoCategories)=>[
-			...videoCategories,
-			...tempVidArr
-		])
-		setMusicCategories(tempMusicArr)
-		setBooksCategories(tempBooksArr)
-		console.log("After Submit: ",videoCategories,musicCategories,booksCategories)
-		console.log("After Edit : ",name,email,recipient1,recipient2)
-
-			axios.patch('http://localhost:3500/user', {
-				_id: _id,
-				user_name:username,
-				recipient1: recipient1,
-				recipient2: recipient2,
-				password: password,
-				e_mail: email,
-				video:videoCategories,
-				music:musicCategories,
-				books:booksCategories
-			}
-			).then(response => {
-			if (response.status === 200)
-			{
-				console.log(response.message)
-				navigate ('/dashboard',{state:{_id : _id,name:username }})
-			}
-			console.log("User Updated");
-			}).catch(error => {
-			console.error("Error:", error);
-			});
-		};
-
-		const handleChangeSubVideo = (event) => {
-			const {name,checked} = event.target;
-			setChecked_video(checked_video=>({
-			...checked_video,
-			[name] : checked,
-			
-			}))
-			console.log(name)
-			let tempVidArr = []
-			tempVidArr.push(name)
-			setVideoCategories(tempVidArr)
-		}
-	
-		const handleChangeSubMusic = (event) => {
-			const {name,checked} = event.target;
-			setChecked_music(checked_music=>({
-			...checked_music,
-			[name]:checked
-			}))
-			let tempMusicArr=[]
-			tempMusicArr.push(name)
-			setMusicCategories(tempMusicArr)
-		}
-	
-		const handleChangeSubBooks=(event)=>{
-		const {name,checked} = event.target;
-		setChecked_books(checked_books=>({
-			...checked_books,
-			[name]:checked
-		}))
-		let tempBooksArr = []
-		tempBooksArr.push(name)
-		setBooksCategories(tempBooksArr)
-		}
-		
-		const handleVideoChange = (event) => {
-			const { name, checked } = event.target;
-			setVideo(!video)
-			setMusic(false)
-			setBooks(false)
-			}
-		
-			const handleMusicChange = (event) => {
-			const { name, checked } = event.target;
-				setVideo(false)
-				setMusic(!music)
-				setBooks(false)
-			
-			}
-		
-			const handleBooksChange = (event) => {
-				const { name, checked } = event.target;
-				setVideo(false)
-				setMusic(false)
-				setBooks(!books)
-
-				}
-
-				const children_video = (
-					<Box sx={{ display: 'flex', flexDirection: 'column', ml: 2 }}>
-					<FormLabel className='form_sub'>What type of videos you like</FormLabel>
-					<FormControlLabel
-						label="Cats"
-						control={<Checkbox checked={checked_video.cats} name='cats' onChange={handleChangeSubVideo} />}
+      for (const music in checked_music) {
+        const status = checked_music[music];
+        if (status === true) {
+          tempMusicArr.push(music);
+        }
+      }
+  
+      for (const books in checked_books) {
+        const status = checked_books[books];
+        if (status === true) {
+          tempBooksArr.push(books);
+        }
+      }
+      setVideoCategories((videoCategories)=>[
+          ...videoCategories,
+          ...tempVidArr
+        ])
+        setMusicCategories(tempMusicArr)
+        setBooksCategories(tempBooksArr)
+        console.log("After Submit: ",videoCategories,musicCategories,booksCategories)
+        console.log("After Edit : ",name,email,recipient1,recipient2)
+  
+  
+        
+           axios.patch('http://localhost:3500/user', {
+              _id: _id,
+              user_name:username,
+              recipient1: recipient1,
+              recipient2: recipient2,
+              password: password,
+              e_mail: email,
+              video:videoCategories,
+              music:musicCategories,
+              books:booksCategories
+            }
+          ).then(response => {
+            if (response.status === 200)
+            {
+              console.log(response.message)
+              navigate ('/dashboard',{state:{_id : _id,name:username }})
+            }
+            console.log("User Updated");
+          }).catch(error => {
+            console.error("Error:", error);
+          });
+        };
+        
+   // setFormsubmitted(true)
+    
+     
+  
+      const handleChangeSubVideo = (event) => {
+          const {name,checked} = event.target;
+          setChecked_video(checked_video=>({
+            ...checked_video,
+            [name] : checked,
+           
+          }))
+          console.log(name)
+          let tempVidArr = []
+          tempVidArr.push(name)
+          setVideoCategories(tempVidArr)
+       }
+    
+       const handleChangeSubMusic = (event) => {
+          const {name,checked} = event.target;
+          setChecked_music(checked_music=>({
+            ...checked_music,
+            [name]:checked
+          }))
+          let tempMusicArr=[]
+          tempMusicArr.push(name)
+          setMusicCategories(tempMusicArr)
+       }
+    
+       const handleChangeSubBooks=(event)=>{
+        const {name,checked} = event.target;
+        setChecked_books(checked_books=>({
+          ...checked_books,
+           [name]:checked
+        }))
+        let tempBooksArr = []
+        tempBooksArr.push(name)
+        setBooksCategories(tempBooksArr)
+       }
+       
+       const handleVideoChange = (event) => {
+          const { name, checked } = event.target;
+            setVideo(!video)
+            setMusic(false)
+            setBooks(false)
+          }
+      
+          const handleMusicChange = (event) => {
+            const { name, checked } = event.target;
+              setVideo(false)
+              setMusic(!music)
+              setBooks(false)
+          
+            }
+      
+            const handleBooksChange = (event) => {
+              const { name, checked } = event.target;
+                setVideo(false)
+                setMusic(false)
+                setBooks(!books)
+  
+              }
+ 
+							
+			const children_video = (
+				<Box sx={{ display: "flex", flexDirection: "column", ml: 2 }}>
+				<FormLabel className="form_sub">What type of videos you like</FormLabel>
+				<FormControlLabel
+					label="Web Series"
+					control={
+					<Checkbox
+						checked={checked_video.web_series}
+						name="web_series"
+						onChange={handleChangeSubVideo}
 					/>
-					<FormControlLabel
-						label="Dogs"
-						control={<Checkbox checked={checked_video.dogs} name='dogs' onChange={handleChangeSubVideo} />}
+					}
+				/>
+				<FormControlLabel
+					label="Space"
+					control={
+					<Checkbox
+						checked={checked_video.space}
+						name="space"
+						onChange={handleChangeSubVideo}
 					/>
-					</Box>
-				);
+					}
+				/>
+				<FormControlLabel
+					label="Old Movies"
+					control={
+					<Checkbox
+						checked={checked_video.old_movies}
+						name="old_movies"
+						onChange={handleChangeSubVideo}
+					/>
+					}
+				/>
+				<FormControlLabel
+					label="Nature"
+					control={
+					<Checkbox
+						checked={checked_video.nature}
+						name="nature"
+						onChange={handleChangeSubVideo}
+					/>
+					}
+				/>
+				<FormControlLabel
+					label="Motivational"
+					control={
+					<Checkbox
+						checked={checked_video.motivational}
+						name="motivational"
+						onChange={handleChangeSubVideo}
+					/>
+					}
+				/>
+				</Box>
+			);
 				
-				const children_music = (
-					<Box sx={{ display: 'flex', flexDirection: 'column', ml: 2 }}>
-					<FormLabel className='form_sub'>What type of music you like</FormLabel>
-					<FormControlLabel
-						label="Rahman"
-						control={<Checkbox checked={checked_music.rahman} name='rahman' onChange={handleChangeSubMusic} />}
-					/>
-					<FormControlLabel
-						label="Arijit"
-						control={<Checkbox checked={checked_music.arijit} name='arijit' onChange={handleChangeSubMusic} />}
-					/>
-					</Box>
-				);
-				
-				const children_books=(
-					<Box sx={{ display: 'flex', flexDirection: 'column', ml: 2 }}>
-					<FormLabel className='form_sub'>What type of book you like</FormLabel>
-					<FormControlLabel
-						label="Thriller"
-						control={<Checkbox checked={checked_books.thriller} name='thriller' onChange={handleChangeSubBooks} />}
-					/>
-					<FormControlLabel
-						label="Romance"
-						control={<Checkbox checked={checked_books.romance} name='romance' onChange={handleChangeSubBooks} />}
-					/>
-					</Box>
-				)
+			const children_music = (
+				<Box sx={{ display: "flex", flexDirection: "column", ml: 2 }}>
+				  <FormLabel className="form_sub">What type of music you like</FormLabel>
+				  <FormControlLabel
+					label="Lofi"
+					control={
+					  <Checkbox
+						checked={checked_music.lofi}
+						name="lofi"
+						onChange={handleChangeSubMusic}
+					  />
+					}
+				  />
+				  <FormControlLabel
+					label="Indian Music"
+					control={
+					  <Checkbox
+						checked={checked_music.indian_music}
+						name="indian_music"
+						onChange={handleChangeSubMusic}
+					  />
+					}
+				  />
+				   <FormControlLabel
+					label="Western Music"
+					control={
+					  <Checkbox
+						checked={checked_music.western_music}
+						name="western_music"
+						onChange={handleChangeSubMusic}
+					  />
+					}
+				  />
+				   <FormControlLabel
+					label="Classical Music"
+					control={
+					  <Checkbox
+						checked={checked_music.classical_music}
+						name="classical_music"
+						onChange={handleChangeSubMusic}
+					  />
+					}
+				  />
+				</Box>
+			  );
+			  const children_books = (
+				<Box sx={{ display: "flex", flexDirection: "column", ml: 2 }}>
+				  <FormLabel className="form_sub">What type of book you like</FormLabel>
+				  <FormControlLabel
+					label="Thriller"
+					control={
+					  <Checkbox
+						checked={checked_books.thriller}
+						name="thriller"
+						onChange={handleChangeSubBooks}
+					  />
+					}
+				  />
+				  <FormControlLabel
+					label="Romantic"
+					control={
+					  <Checkbox
+						checked={checked_books.romantic}
+						name="romantic"
+						onChange={handleChangeSubBooks}
+					  />
+					}
+				  />
+				   <FormControlLabel
+					label="Fiction"
+					control={
+					  <Checkbox
+						checked={checked_books.fiction}
+						name="fiction"
+						onChange={handleChangeSubBooks}
+					  />
+					}
+				  />
+				   <FormControlLabel
+					label="Classic"
+					control={
+					  <Checkbox
+						checked={checked_books.classic}
+						name="classic"
+						onChange={handleChangeSubBooks}
+					  />
+					}
+				  />
+				   <FormControlLabel
+					label="Best Seller"
+					control={
+					  <Checkbox
+						checked={checked_books.best_seller}
+						name="best_seller"
+						onChange={handleChangeSubBooks}
+					  />
+					}
+				  />
+				</Box>
+			  );
+			
 	
 	return (
 		<>
@@ -256,7 +402,7 @@ const EditProfile = () => {
 							<FontAwesomeIcon icon={faUser} className="fa-lg me-3 fa-fw" />
 							<div className="form-outline flex-fill mb-0">
 							<Form.Label htmlFor="form3Example1c" className='form_label'><b>Name</b></Form.Label>
-							<Form.Control type="text"  value={username} onChange={(e)=>setName(e.target.value)} />
+							<Form.Control type="text"  value={name} onChange={(e)=>setName(e.target.value)} />
 							
 							</div>
 						</Form.Group>
@@ -369,7 +515,7 @@ const EditProfile = () => {
 						</div>
 						<div className='edit_buttons'>
 						<div className='edit'>
-							<Button variant='primary' onClick={handleUpdate}>Edit Profile</Button>
+							<Button  onClick={handleUpdate}>Edit Profile</Button>
 						</div>
 						<div className='cancel'>
 							<Button variant='secondary' onClick={()=>navigate('/dashboard',{state:{_id:_id,name:name}})}>Cancel</Button>
@@ -388,5 +534,6 @@ const EditProfile = () => {
 		</>
 	)
 }
-
 export default EditProfile
+
+ 
