@@ -10,6 +10,9 @@ router.route('/')
 router.route('/login')
     .post(userController.getUser)
 
+router.route('/getUserDetails')
+    .post(userController.getUserDetails)
+
 router.route('/setPreferences')
     .post(userController.setPreferences)
 

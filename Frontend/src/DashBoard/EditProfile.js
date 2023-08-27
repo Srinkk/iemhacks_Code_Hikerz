@@ -10,7 +10,7 @@ import { FormControlLabel } from '@mui/material';
 import { Checkbox } from '@mui/material';
 import Preference from './Preference';
 import {Box} from '@mui/material';
- 
+import Navbar from '../Navbar/Navbar'
 import { Link, useNavigate } from 'react-router-dom'
 
 const EditProfile = () => {
@@ -24,7 +24,7 @@ const EditProfile = () => {
     const[email,setEmail]=useState('')
     const[username,setName]=useState(name)
     const[password,setPassword]=useState('')
-    const[err,setErr]=useState(null)
+    // const[err,setErr]=useState(null)
     const [relation1,setRelation1]=useState('')
     const [alertRecipient1,setAlertRecipient1]=useState('')
     const [relation2,setRelation2]=useState('')
@@ -39,10 +39,24 @@ const EditProfile = () => {
     const [musicCategories, setMusicCategories] = useState([])
     const [booksCategories, setBooksCategories] = useState([])
 
-    // useEffect(()=>{
-    //   axios.post('http://localhost:3500/user/login',
-    // },[_id])
-
+    useEffect(() => {
+      axios.post('http://localhost:3500/user/getUserDetails', { _id : _id })
+      .then((response) => {
+        const user = response.data.user
+        setEmail(user.e_mail)
+        setName(user.name)
+        setAlertRecipient1(user.alertRecipients[0].e_mail)
+        setRelation1(user.alertRecipients[0].relation)
+        setAlertRecipient2(user.alertRecipients[1].e_mail)
+        setRelation2(user.alertRecipients[1].relation)
+        setVideoCategories(user.preferences.video)
+        setMusicCategories(user.preferences.music)
+        setBooksCategories(user.preferences.books)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+    }, [])
   
 
   const[checked_video,setChecked_video]=useState({
@@ -59,9 +73,6 @@ const EditProfile = () => {
     thriller:false,
    romance:false
   })
-
- 
-  
 
   const handleUpdate = async(e) => {
     e.preventDefault();
@@ -230,6 +241,7 @@ const EditProfile = () => {
               )
  
   return (
+    <>
     <section className='form_section_edit'>
         <Container className='h-10'>
             <Row className='d-flex justify-content-center align-items-center h-50'>
@@ -380,6 +392,7 @@ const EditProfile = () => {
             </Row>
         </Container>
     </section>
+    </>
   )
 }
 

@@ -7,7 +7,7 @@ const Music = ({ currentEmotion, preferences }) => {
 
   useEffect(() => {
     console.log(preferences);
-
+    console.log(currentEmotion)
     axios
       .post("http://localhost:3500/content/music", {
         currentEmotion: currentEmotion,
@@ -20,9 +20,9 @@ const Music = ({ currentEmotion, preferences }) => {
           console.log(musicId);
         });
       })
-      .catch((err) => {
-        console.log(err);
-      });
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
   }, [currentEmotion]);
 
   return (
@@ -44,7 +44,7 @@ const Music = ({ currentEmotion, preferences }) => {
                 ></iframe>
               ))
             ) : (
-              <div className="loading" style={{ color: "#616b74" }}>
+              <div className="loading">
                 <Spinner animation="border" role="status"></Spinner>
                 <p>Loading...</p>
               </div>

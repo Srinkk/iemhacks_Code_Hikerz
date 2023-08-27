@@ -493,4 +493,109 @@ code {
   padding:20px 0px;
 }
 
+<<<<<<< HEAD
 
+=======
+.signup_button {
+  height: 50px;
+  position: relative;
+  left: 20px;
+  border-color: #ad4582;
+  background-color: #ad4582;
+}
+.send_button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  margin-left: 10px;
+  cursor: pointer;
+}
+.loading {
+  position: relative;
+  top: 300px;
+  color: #616b74;
+}
+.extension_button {
+  text-decoration: none;
+  color: white;
+}
+.link_ex {
+  position: relative;
+  left: -15px;
+}
+.book_boxes {
+  width: 100%;
+  margin: 10px auto;
+  padding: 10px;
+  position: relative;
+  top: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  box-sizing: content-box;
+  /* border:1px solid black; */
+}
+.book_card {
+  position: relative;
+  top: 60px;
+  background-color: #ade0bb;
+  display: inline-block;
+  align-items: center;
+  padding: 15px;
+  margin: 6px 20px;
+  box-shadow: 0 5px 5px rgba(1, 20, 12, 0.475);
+  border-radius: 20px;
+  /* border:1px solid red; */
+}
+.book_card img {
+  width: 200px;
+  height: 200px;
+  border-radius: 20px;
+}
+.book_card:hover {
+  transform: scale(0.95);
+  cursor: pointer;
+  background-color: #dbece0;
+}
+.bottom {
+  width: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 10px;
+}
+.truncated-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.learn-class {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  justify-content: center;
+  /* column-gap: 2rem; */
+  margin: 2rem;
+}
+
+.learn-image img {
+  width: 100%;
+  height: 70%;
+}
+
+.learn-container {
+  margin-left: auto;
+  width: 50%;
+  height: 70%;
+  margin: auto;
+}
+
+.learn-container h1 {
+  color: #256e53;
+}
+
+.icon-input-container {
+  display: flex;
+}
+>>>>>>> ab0e2b4fa4ec482bd765ffe32bdd7605bf050d6e

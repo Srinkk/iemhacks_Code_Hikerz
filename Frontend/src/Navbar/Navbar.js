@@ -15,7 +15,7 @@ import { Link } from "react-router-dom";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Divider } from "@mui/material";
 
-const pages = ["Learn About Mental Health", "Resources", "About Us"];
+const pages = ["Learn About Mental Health", "About Us"];
 //const settings = ["Account", "Dashboard", "Logout"];
 const forms = ["Signup", "Login"];
 

@@ -39,8 +39,6 @@ import Preference from "./Preference";
 
 const drawerWidth = 240;
 
-
-
 const openedMixin = (theme) => ({
   width: drawerWidth,
   transition: theme.transitions.create("width", {
@@ -112,33 +110,28 @@ export default function Dashboard() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const [id,setId] = useState();
-  const [user,setUser] = useState('');
+  const [id, setId] = useState();
+  const [user, setUser] = useState("");
 
-
-  
-  useEffect(()=>{
+  useEffect(() => {
     const { _id, name } = location.state || {};
     const urlParams = new URLSearchParams(window.location.search);
 
-    const userId = urlParams.get('user_id');
-    const userName = urlParams.get('user_name');
-  
-   
-   
-     if(_id  && name ){
-      console.log("Parameters are  in props")
-      setId(_id)
-      setUser(name)
-      console.log(id,user)
-     }
-     else if (userId && userName){
-      console.log ("Parameters are not in props")
-      setId(userId)
-      setUser(userName)
-     }
-  },[])
- 
+    const userId = urlParams.get("user_id");
+    const userName = urlParams.get("user_name");
+
+    if (_id && name) {
+      console.log("Parameters are  in props");
+      setId(_id);
+      setUser(name);
+      console.log(id, user);
+    } else if (userId && userName) {
+      console.log("Parameters are not in props");
+      setId(userId);
+      setUser(userName);
+    }
+  }, []);
+
   const anchorRef = React.useRef(null);
   const [selectedIndex, setSelectedIndex] = React.useState(1);
 
@@ -152,8 +145,7 @@ export default function Dashboard() {
   const [chatBotSelected, setChatBotSelected] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [currentEmotion, setCurrentEmotion] = useState();
-  const [hoverContact,setHoverContact] =useState(false);
- 
+  const [hoverContact, setHoverContact] = useState(false);
 
   const BaseURL = "http://127.0.0.1:5002/";
 
@@ -183,44 +175,43 @@ export default function Dashboard() {
 
   const accountDropDown = () => {
     setOpenAccountDropDown(!openAccountDropDown);
-    console.log("Dropdown state :",openAccountDropDown)
+    console.log("Dropdown state :", openAccountDropDown);
   };
 
   useEffect(() => {
     console.log("id: ", id);
-    console.log("status :",preferStatus)
+    console.log("status :", preferStatus);
 
-    if(id)
-    {
+    if (id) {
       axios
-      .post("http://localhost:3500/user/preferences", { _id: id })
-      .then((response) => {
-        //  console.log(response.status)
-        let tempStatus = response.status;
-        setPreferStatus(tempStatus);
-        console.log("status :",preferStatus)
+        .post("http://localhost:3500/user/preferences", { _id: id })
+        .then((response) => {
+          //  console.log(response.status)
+          let tempStatus = response.status;
+          setPreferStatus(tempStatus);
+          console.log("status :", preferStatus);
 
-        if (tempStatus === 200) {
-          setPreferences(response.data);
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+          if (tempStatus === 200) {
+            setPreferences(response.data);
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+        });
     }
   }, [id]);
 
   useEffect(() => {
-    if(id){
+    if (id) {
       axios
-      .post("http://localhost:3500/user/currentEmotion", { _id: id })
-      .then((response) => {
-        setCurrentEmotion(response.data.currentEmotion);
-        console.log(currentEmotion);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+        .post("http://localhost:3500/user/currentEmotion", { _id: id })
+        .then((response) => {
+          setCurrentEmotion(response.data.currentEmotion);
+          console.log(currentEmotion);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
     }
   }, [id]);
 
@@ -348,12 +339,22 @@ export default function Dashboard() {
             </Typography>
             <List style={{ color: "#33916e", fontWeight: 400 }}>
               <ListItem>
-                <ListItemButton onClick={() => navigate("/dashboard",{state: { _id: id, name : user }})}>
+                <ListItemButton
+                  onClick={() =>
+                    navigate("/dashboard", { state: { _id: id, name: user } })
+                  }
+                >
                   <ListItemText>Welcome {user}</ListItemText>
                 </ListItemButton>
                 <ListItemButton
                   onClick={() =>
-                    navigate("/extension", { state: { _id: id, name: user, preferStatus:preferStatus } })
+                    navigate("/extension", {
+                      state: {
+                        _id: id,
+                        name: user,
+                        preferStatus: preferStatus,
+                      },
+                    })
                   }
                 >
                   <ListItemText>Get Extension</ListItemText>
@@ -425,196 +426,233 @@ export default function Dashboard() {
               color: "white",
             }}
           >
-            {videoSelected === true?(
+            {videoSelected === true ? (
               <ListItem sx={{ display: "block" }} onClick={handleVideoClicked}>
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? "initial" : "center",
-                  px: 2.5,
-                }}
-              >
-                <ListItemIcon
+                <ListItemButton
                   sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : "auto",
-                    justifyContent: "center",
-                    color: "black",
+                    minHeight: 48,
+                    justifyContent: open ? "initial" : "center",
+                    px: 2.5,
                   }}
                 >
+                  <ListItemIcon
+                    sx={{
+                      minWidth: 0,
+                      mr: open ? 3 : "auto",
+                      justifyContent: "center",
+                      color: "black",
+                    }}
+                  >
                     <PlayCircleFilledIcon />
-                </ListItemIcon>
-                <ListItemText primary="Video"  sx={{ opacity: open ? 1 : 0 ,color:"black"}} />
-              </ListItemButton>
-            </ListItem>
-            ):(
-              <ListItem disabled sx={{ display: "block" }} onClick={handleVideoClicked}>
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? "initial" : "center",
-                  px: 2.5,
-                }}
+                  </ListItemIcon>
+                  <ListItemText
+                    primary="Video"
+                    sx={{ opacity: open ? 1 : 0, color: "black" }}
+                  />
+                </ListItemButton>
+              </ListItem>
+            ) : (
+              <ListItem
+                disabled
+                sx={{ display: "block" }}
+                onClick={handleVideoClicked}
               >
-                <ListItemIcon
+                <ListItemButton
                   sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : "auto",
-                    justifyContent: "center",
-                    color: "white",
+                    minHeight: 48,
+                    justifyContent: open ? "initial" : "center",
+                    px: 2.5,
                   }}
                 >
+                  <ListItemIcon
+                    sx={{
+                      minWidth: 0,
+                      mr: open ? 3 : "auto",
+                      justifyContent: "center",
+                      color: "white",
+                    }}
+                  >
                     <PlayCircleFilledIcon />
-                </ListItemIcon>
-                <ListItemText primary="Video" sx={{ opacity: open ? 1 : 0 }} />
-              </ListItemButton>
-            </ListItem>
+                  </ListItemIcon>
+                  <ListItemText
+                    primary="Video"
+                    sx={{ opacity: open ? 1 : 0 }}
+                  />
+                </ListItemButton>
+              </ListItem>
             )}
 
-           {musicSelected === true?(
-            <ListItem sx={{ display: "block" }} onClick={handleMusicClicked}>
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? "initial" : "center",
-                  px: 2.5,
-                }}
-              >
-                <ListItemIcon
+            {musicSelected === true ? (
+              <ListItem sx={{ display: "block" }} onClick={handleMusicClicked}>
+                <ListItemButton
                   sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : "auto",
-                    justifyContent: "center",
-                    color: "black",
+                    minHeight: 48,
+                    justifyContent: open ? "initial" : "center",
+                    px: 2.5,
                   }}
                 >
-                  <GraphicEqIcon />
-                </ListItemIcon>
-                <ListItemText primary="Music" color="black" sx={{ opacity: open ? 1 : 0 , color : "black"}} />
-              </ListItemButton>
-            </ListItem>
-           ):(
-            <ListItem disabled sx={{ display: "block" }} onClick={handleMusicClicked}>
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? "initial" : "center",
-                  px: 2.5,
-                }}
+                  <ListItemIcon
+                    sx={{
+                      minWidth: 0,
+                      mr: open ? 3 : "auto",
+                      justifyContent: "center",
+                      color: "black",
+                    }}
+                  >
+                    <GraphicEqIcon />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary="Music"
+                    color="black"
+                    sx={{ opacity: open ? 1 : 0, color: "black" }}
+                  />
+                </ListItemButton>
+              </ListItem>
+            ) : (
+              <ListItem
+                disabled
+                sx={{ display: "block" }}
+                onClick={handleMusicClicked}
               >
-                <ListItemIcon
+                <ListItemButton
                   sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : "auto",
-                    justifyContent: "center",
-                    color: "white",
+                    minHeight: 48,
+                    justifyContent: open ? "initial" : "center",
+                    px: 2.5,
                   }}
                 >
-                  <GraphicEqIcon />
-                </ListItemIcon>
-                <ListItemText primary="Music" sx={{ opacity: open ? 1 : 0 }} />
-              </ListItemButton>
-            </ListItem>
-           )}
-           {booksSelected === true ? (
-            <ListItem sx={{ display: "block" }} onClick={handleBooksClicked}>
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? "initial" : "center",
-                  px: 2.5,
-                }}
-              >
-                <ListItemIcon
+                  <ListItemIcon
+                    sx={{
+                      minWidth: 0,
+                      mr: open ? 3 : "auto",
+                      justifyContent: "center",
+                      color: "white",
+                    }}
+                  >
+                    <GraphicEqIcon />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary="Music"
+                    sx={{ opacity: open ? 1 : 0 }}
+                  />
+                </ListItemButton>
+              </ListItem>
+            )}
+            {booksSelected === true ? (
+              <ListItem sx={{ display: "block" }} onClick={handleBooksClicked}>
+                <ListItemButton
                   sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : "auto",
-                    justifyContent: "center",
-                    color: "black",
+                    minHeight: 48,
+                    justifyContent: open ? "initial" : "center",
+                    px: 2.5,
                   }}
                 >
-                  <ImportContactsIcon />
-                </ListItemIcon>
-                <ListItemText primary="Books" sx={{ opacity: open ? 1 : 0, color:"black" }} />
-              </ListItemButton>
-            </ListItem>
-           ):(
-            <ListItem disabled sx={{ display: "block" }} onClick={handleBooksClicked}>
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? "initial" : "center",
-                  px: 2.5,
-                }}
+                  <ListItemIcon
+                    sx={{
+                      minWidth: 0,
+                      mr: open ? 3 : "auto",
+                      justifyContent: "center",
+                      color: "black",
+                    }}
+                  >
+                    <ImportContactsIcon />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary="Books"
+                    sx={{ opacity: open ? 1 : 0, color: "black" }}
+                  />
+                </ListItemButton>
+              </ListItem>
+            ) : (
+              <ListItem
+                disabled
+                sx={{ display: "block" }}
+                onClick={handleBooksClicked}
               >
-                <ListItemIcon
+                <ListItemButton
                   sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : "auto",
-                    justifyContent: "center",
-                    color: "white",
+                    minHeight: 48,
+                    justifyContent: open ? "initial" : "center",
+                    px: 2.5,
                   }}
                 >
-                  <ImportContactsIcon />
-                </ListItemIcon>
-                <ListItemText primary="Books" sx={{ opacity: open ? 1 : 0 }} />
-              </ListItemButton>
-            </ListItem>
-           )}
+                  <ListItemIcon
+                    sx={{
+                      minWidth: 0,
+                      mr: open ? 3 : "auto",
+                      justifyContent: "center",
+                      color: "white",
+                    }}
+                  >
+                    <ImportContactsIcon />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary="Books"
+                    sx={{ opacity: open ? 1 : 0 }}
+                  />
+                </ListItemButton>
+              </ListItem>
+            )}
 
-           {chatBotSelected === true ?(
-            <ListItem sx={{ display: "block" }} onClick={handleChatBotClicked}>
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? "initial" : "center",
-                  px: 2.5,
-                }}
+            {chatBotSelected === true ? (
+              <ListItem
+                sx={{ display: "block" }}
+                onClick={handleChatBotClicked}
               >
-                <ListItemIcon
+                <ListItemButton
                   sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : "auto",
-                    justifyContent: "center",
-                    color: "white",
+                    minHeight: 48,
+                    justifyContent: open ? "initial" : "center",
+                    px: 2.5,
                   }}
                 >
-                  <AssistantIcon />
-                </ListItemIcon>
-                <ListItemText
-                  primary="ChatBot"
-                  sx={{ opacity: open ? 1 : 0 }}
-                />
-              </ListItemButton>
-            </ListItem>
-           ):(
-            <ListItem disabled sx={{ display: "block" }} onClick={handleChatBotClicked}>
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? "initial" : "center",
-                  px: 2.5,
-                }}
+                  <ListItemIcon
+                    sx={{
+                      minWidth: 0,
+                      mr: open ? 3 : "auto",
+                      justifyContent: "center",
+                      color: "white",
+                    }}
+                  >
+                    <AssistantIcon />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary="ChatBot"
+                    sx={{ opacity: open ? 1 : 0 }}
+                  />
+                </ListItemButton>
+              </ListItem>
+            ) : (
+              <ListItem
+                disabled
+                sx={{ display: "block" }}
+                onClick={handleChatBotClicked}
               >
-                <ListItemIcon
+                <ListItemButton
                   sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : "auto",
-                    justifyContent: "center",
-                    color: "white",
+                    minHeight: 48,
+                    justifyContent: open ? "initial" : "center",
+                    px: 2.5,
                   }}
                 >
-                  <AssistantIcon />
-                </ListItemIcon>
-                <ListItemText
-                  primary="ChatBot"
-                  sx={{ opacity: open ? 1 : 0 }}
-                />
-              </ListItemButton>
-            </ListItem>
-           )}
+                  <ListItemIcon
+                    sx={{
+                      minWidth: 0,
+                      mr: open ? 3 : "auto",
+                      justifyContent: "center",
+                      color: "white",
+                    }}
+                  >
+                    <AssistantIcon />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary="ChatBot"
+                    sx={{ opacity: open ? 1 : 0 }}
+                  />
+                </ListItemButton>
+              </ListItem>
+            )}
           </List>
-
         </Drawer>
 
         <DrawerHeader />
@@ -650,21 +688,31 @@ export default function Dashboard() {
               }}
             >
               {/* <Typography>{name}</Typography> */}
-              <ListItem sx={{ display: "block" }}  >
+              <ListItem sx={{ display: "block" }}>
                 <ListItemButton>
-                 <ListItemIcon>
-                   <EditIcon/>
-                 </ListItemIcon>
-                  <ListItemText   onClick={()=>navigate('/editprofile',{state:{_id: id,name:user}})}>Edit Profile</ListItemText>
+                  <ListItemIcon>
+                    <EditIcon />
+                  </ListItemIcon>
+                  <ListItemText
+                    onClick={() =>
+                      navigate("/editprofile", {
+                        state: { _id: id, name: user },
+                      })
+                    }
+                  >
+                    Edit Profile
+                  </ListItemText>
                 </ListItemButton>
               </ListItem>
 
-              <ListItem sx={{ display: "block" }}  >
+              <ListItem sx={{ display: "block" }}>
                 <ListItemButton>
-                 <ListItemIcon>
-                   <LogoutIcon/>
-                 </ListItemIcon>
-                  <ListItemText   onClick={()=>navigate('/home')}>Logout</ListItemText>
+                  <ListItemIcon>
+                    <LogoutIcon />
+                  </ListItemIcon>
+                  <ListItemText onClick={() => navigate("/")}>
+                    Logout
+                  </ListItemText>
                 </ListItemButton>
               </ListItem>
             </List>
@@ -696,7 +744,7 @@ export default function Dashboard() {
               <h5>Contact Us</h5>
             </Box>
           )}
-          </Box>
+        </Box>
       </Box>
     </Box>
   );
