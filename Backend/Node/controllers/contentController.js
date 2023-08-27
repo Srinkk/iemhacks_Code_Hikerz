@@ -1,10 +1,9 @@
 const asynchandler = require('express-async-handler')
 
-const BASE_URL = "http://127.0.0.1:5000"
-
-const videoApiURL = `${BASE_URL}/getVideos`
-const booksApiURL = `${BASE_URL}/getBooks`
-const musicApiURL = `${BASE_URL}/getMusics`
+const BASE_URL = "http://127.0.0.1:500"
+const videoApiURL = `${BASE_URL}2/getVideos`
+const booksApiURL = `${BASE_URL}3/getBooks`
+const musicApiURL = `${BASE_URL}4/getMusics`
 
 const getVideo = asynchandler((req, res) => {
     const { preferences, currentEmotion } = req.body
