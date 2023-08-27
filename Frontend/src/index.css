@@ -197,7 +197,7 @@ code {
     
 }
 .vid_boxes:hover{
-  transform:scale(1.5);
+  transform:scale(1.2);
 }
 
 .mus_boxes{
@@ -214,7 +214,7 @@ code {
     transition: transform 0.3s ease-in-out;
 }
 .mus_boxes:hover{
-  transform:scale(1.5);
+  transform:scale(1.2);
 }
 .button_group {
   display: flex;
@@ -493,9 +493,6 @@ code {
   padding:20px 0px;
 }
 
-<<<<<<< HEAD
-
-=======
 .signup_button {
   height: 50px;
   position: relative;
@@ -598,4 +595,3 @@ code {
 .icon-input-container {
   display: flex;
 }
->>>>>>> ab0e2b4fa4ec482bd765ffe32bdd7605bf050d6e
