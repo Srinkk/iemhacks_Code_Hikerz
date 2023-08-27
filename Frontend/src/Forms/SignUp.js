@@ -76,6 +76,9 @@ const SignUp = () => {
                           className="fa-lg me-3 fa-fw"
                         />
                         <div className="form-outline flex-fill mb-0">
+                          <Form.Label htmlFor="email" className="form_label">
+                            <b>Email</b>
+                          </Form.Label>
                           <Form.Control
                             autoFocus
                             type="email"
@@ -83,9 +86,6 @@ const SignUp = () => {
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                           />
-                          <Form.Label htmlFor="email" className="form_label">
-                            <b>Email</b>
-                          </Form.Label>
                         </div>
                       </Form.Group>
 
@@ -95,17 +95,17 @@ const SignUp = () => {
                           className="fa-lg me-3 fa-fw"
                         />
                         <div className="form-outline flex-fill mb-0">
-                          <Form.Control
-                            type="text"
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
-                          />
                           <Form.Label
                             htmlFor="form3Example1c"
                             className="form_label"
                           >
                             <b>Name</b>
                           </Form.Label>
+                          <Form.Control
+                            type="text"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                          />
                         </div>
                       </Form.Group>
 
@@ -117,6 +117,9 @@ const SignUp = () => {
                         <div className="form-outline flex-fill mb-0">
                           <div className="relation_field">
                             <div className="form_label_relation">
+                              <Form.Label htmlFor="form3Example1c">
+                                <b>Relation</b>
+                              </Form.Label>
                               <Form.Select
                                 type="text"
                                 value={relation1}
@@ -129,11 +132,11 @@ const SignUp = () => {
                                 <option value="Relative">Relative</option>
                                 <option value="Friend">Friend</option>
                               </Form.Select>
-                              <Form.Label htmlFor="form3Example1c">
-                                <b>Relation</b>
-                              </Form.Label>
                             </div>
                             <div className="form_label_email">
+                              <Form.Label htmlFor="form3Example1c">
+                                <b>Email</b>
+                              </Form.Label>
                               <Form.Control
                                 type="text"
                                 value={alertRecipient1}
@@ -141,9 +144,6 @@ const SignUp = () => {
                                   setAlertRecipient1(e.target.value)
                                 }
                               />
-                              <Form.Label htmlFor="form3Example1c">
-                                <b>Email</b>
-                              </Form.Label>
                             </div>
                           </div>
                         </div>
@@ -156,6 +156,9 @@ const SignUp = () => {
                         <div className="form-outline flex-fill mb-0">
                           <div className="relation_field">
                             <div className="form_label_relation">
+                              <Form.Label htmlFor="form3Example1c">
+                                <b>Relation</b>
+                              </Form.Label>
                               <Form.Select
                                 type="text"
                                 value={relation2}
@@ -168,11 +171,11 @@ const SignUp = () => {
                                 <option value="Relative">Relative</option>
                                 <option value="Friend">Friend</option>
                               </Form.Select>
-                              <Form.Label htmlFor="form3Example1c">
-                                <b>Relation</b>
-                              </Form.Label>
                             </div>
                             <div className="form_label_email">
+                              <Form.Label htmlFor="form3Example1c">
+                                <b>Email</b>
+                              </Form.Label>
                               <Form.Control
                                 type="text"
                                 value={alertRecipient2}
@@ -180,9 +183,6 @@ const SignUp = () => {
                                   setAlertRecipient2(e.target.value)
                                 }
                               />
-                              <Form.Label htmlFor="form3Example1c">
-                                <b>Email</b>
-                              </Form.Label>
                             </div>
                           </div>
                         </div>
@@ -194,17 +194,17 @@ const SignUp = () => {
                           className="fa-lg me-3 fa-fw"
                         />
                         <div className="form-outline flex-fill mb-0">
-                          <Form.Control
-                            type="password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                          />
                           <Form.Label
                             htmlFor="form3Example1c"
                             className="form_label"
                           >
                             <b>Password</b>
                           </Form.Label>
+                          <Form.Control
+                            type="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                          />
                         </div>
                       </Form.Group>
                       {/* ... other form groups ... */}
@@ -229,6 +229,7 @@ const SignUp = () => {
                       position={"relative"}
                       left={"20px"}
                       alt="Sample image"
+                      style={{ borderRadius: "20px" }}
                     />
                   </div>
                 </Row>

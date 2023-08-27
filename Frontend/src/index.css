@@ -376,6 +376,7 @@ code {
 .loading {
   position: relative;
   top: 300px;
+  color: #616b74;
 }
 .extension_button {
   text-decoration: none;
@@ -403,23 +404,24 @@ code {
   background-color: #ade0bb;
   display: inline-block;
   align-items: center;
-  padding: 6px 15px;
+  padding: 15px;
   margin: 6px 20px;
-  box-shadow: 0 5px 5px rgb(1, 20, 12);
+  box-shadow: 0 5px 5px rgba(1, 20, 12, 0.475);
+  border-radius: 20px;
   /* border:1px solid red; */
 }
 .book_card img {
   width: 200px;
   height: 200px;
+  border-radius: 20px;
 }
 .book_card:hover {
-  transform: scale(0.9);
-  background-color: #fff;
+  transform: scale(0.95);
+  cursor: pointer;
+  background-color: #dbece0;
 }
 .bottom {
   width: 180px;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -429,4 +431,33 @@ code {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.learn-class {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  justify-content: center;
+  /* column-gap: 2rem; */
+  margin: 2rem;
+}
+
+.learn-image img {
+  width: 100%;
+  height: 70%;
+}
+
+.learn-container {
+  margin-left: auto;
+  width: 50%;
+  height: 70%;
+  margin: auto;
+}
+
+.learn-container h1 {
+  color: #256e53;
+}
+
+.icon-input-container {
+  display: flex;
 }
